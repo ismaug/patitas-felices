@@ -1,0 +1,19 @@
+{
+  "name": "patitas-felices",
+  "version": "1.0.0",
+  "description": "Sistema web para la gestión de adopciones y voluntariado de una fundación de rescate animal. Proyecto final de Pruebas y Mantenimiento",
+  "main": "tailwind.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./public/css/styles.css -o ./public/css/output.css --content './public/**/*.{html,js,php}' --config tailwind.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

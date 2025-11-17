@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patitas Felices - Fundación de Rescate Animal</title>
+    <meta name="description" content="Únete a Patitas Felices, la fundación dedicada al rescate y adopción de animales abandonados. Encuentra tu compañero perfecto y salva una vida.">
+    <link rel="stylesheet" href="css/material-design.css">
+    <style>
+        /* Layout Base */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--md-background);
+            color: var(--md-on-background);
+        }
+
+        /* Header Styles */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--md-surface);
+            box-shadow: var(--md-elevation-2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--md-spacing-md) var(--md-spacing-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--md-spacing-lg);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: var(--md-spacing-md);
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--md-radius-full);
+            background: linear-gradient(135deg, var(--md-primary), var(--md-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--md-spacing-lg);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--md-on-surface);
+            font-weight: 500;
+            transition: color var(--md-transition-base);
+        }
+
+        .nav-links a:hover {
+            color: var(--md-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--md-background) 0%, var(--md-tertiary) 100%);
+            padding: var(--md-spacing-3xl) var(--md-spacing-xl);
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: var(--md-radius-xl);
+            margin-top: var(--md-spacing-2xl);
+            box-shadow: var(--md-elevation-4);
+        }
+
+        /* Section Container */
+        .section {
+            padding: var(--md-spacing-3xl) var(--md-spacing-xl);
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-alt {
+            background-color: var(--md-surface-variant);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--md-spacing-lg);
+            margin-top: var(--md-spacing-2xl);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--md-spacing-xl);
+        }
+
+        /* Testimonial */
+        .testimonial-card {
+            max-width: 700px;
+            margin: var(--md-spacing-2xl) auto 0;
+            padding: var(--md-spacing-2xl);
+            text-align: center;
+        }
+
+        .quote {
+            font-style: italic;
+            margin: var(--md-spacing-lg) 0;
+        }
+
+        /* News Card */
+        .news-card {
+            max-width: 600px;
+            margin: var(--md-spacing-2xl) auto 0;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .news-date {
+            display: block;
+            margin-top: var(--md-spacing-sm);
+            opacity: 0.7;
+        }
+
+        /* Map Container */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--md-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--md-elevation-3);
+            margin-top: var(--md-spacing-lg);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--md-spacing-lg);
+            margin-top: var(--md-spacing-xl);
+        }
+
+        .social-button {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--md-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--md-transition-base);
+            text-decoration: none;
+        }
+
+        .social-button:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--md-elevation-4);
+        }
+
+        .social-icon {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--md-primary);
+            color: var(--md-on-primary);
+            padding: var(--md-spacing-2xl) var(--md-spacing-xl);
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: var(--md-spacing-2xl) var(--md-spacing-md);
+            }
+
+            .section {
+                padding: var(--md-spacing-2xl) var(--md-spacing-md);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navegación -->
+    <header class="header">
+        <nav class="header-container">
+            <div class="logo-section">
+                <div class="logo">🐾</div>
+                <h1 class="md-title-large md-text-primary">Patitas Felices</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#acerca" class="md-label-large">Acerca de</a></li>
+                <li><a href="#contacto" class="md-label-large">Contacto</a></li>
+                <li><a href="#noticias" class="md-label-large">Noticias</a></li>
+            </ul>
+            <a href="login.php" class="md-button md-button-filled" aria-label="Iniciar Sesión">
+                Iniciar Sesión
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container fade-in-up">
+            <h2 class="md-display-large md-text-primary">¡Bienvenidos a Patitas Felices! 🐶🐱</h2>
+            <p class="md-headline-small md-text-on-background" style="margin-top: var(--md-spacing-lg);">
+                Cada patita merece un hogar lleno de amor
+            </p>
+            <p class="md-body-large" style="margin-top: var(--md-spacing-md); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Únete a nuestra misión de rescatar, cuidar y encontrar familias para animales abandonados. Tu adopción puede cambiar una vida... ¡y la tuya también!
+            </p>
+            <a href="login.php" class="md-button md-button-filled md-button-accent md-button-large" style="margin-top: var(--md-spacing-xl);" aria-label="Iniciar Sesión para Adoptar">
+                Iniciar Sesión
+            </a>
+            <img src="https://via.placeholder.com/800x400?text=Perros+y+Gatos+Felices+Juntos" 
+                 alt="Perros y gatos felices juntos en un parque" 
+                 class="hero-image md-hover">
+        </div>
+    </section>
+
+    <!-- Essential Foundation Info -->
+    <section class="section" id="acerca">
+        <div class="section-container">
+            <div class="fade-in-up">
+                <h3 class="md-display-small md-text-primary" style="text-align: center;">Sobre Patitas Felices ❤️</h3>
+                <p class="md-body-large" style="text-align: center; margin-top: var(--md-spacing-lg); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    En Patitas Felices, creemos que cada animal merece una segunda oportunidad. Desde 2015, hemos rescatado más de 500 animales abandonados, proporcionándoles cuidado médico, alimentación y, lo más importante, un hogar lleno de amor.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card md-card md-card-elevated md-hover md-bg-primary fade-in-up" style="color: var(--md-on-primary);">
+                    <h4 class="md-headline-large">500+</h4>
+                    <p class="md-title-medium" style="margin-top: var(--md-spacing-sm);">Rescates</p>
+                    <p class="md-body-medium" style="margin-top: var(--md-spacing-xs); opacity: 0.9;">Animales salvados y adoptados</p>
+                </div>
+
+                <div class="stat-card md-card md-card-elevated md-hover md-bg-accent fade-in-up" style="color: var(--md-on-accent); animation-delay: 0.1s;">
+                    <h4 class="md-headline-large">100</h4>
+                    <p class="md-title-medium" style="margin-top: var(--md-spacing-sm);">Voluntarios</p>
+                    <p class="md-body-medium" style="margin-top: var(--md-spacing-xs); opacity: 0.9;">Corazones dedicados a la causa</p>
+                </div>
+
+                <div class="stat-card md-card md-card-elevated md-hover md-bg-secondary fade-in-up" style="color: var(--md-on-secondary); animation-delay: 0.2s;">
+                    <h4 class="md-headline-large">24/7</h4>
+                    <p class="md-title-medium" style="margin-top: var(--md-spacing-sm);">Cuidado</p>
+                    <p class="md-body-medium" style="margin-top: var(--md-spacing-xs); opacity: 0.9;">Atención constante y amorosa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section section-alt">
+        <div class="section-container">
+            <h3 class="md-display-small md-text-primary fade-in-up" style="text-align: center;">Testimonios de Nuestras Familias 🐕‍🦺</h3>
+            
+            <div class="testimonial-card md-card md-card-elevated fade-in-up">
+                <div class="md-card-content">
+                    <blockquote class="quote md-headline-small md-text-on-surface">
+                        "Adoptar a Luna cambió nuestras vidas. Es la perrita más amorosa y juguetona. Gracias Patitas Felices por darnos esta oportunidad."
+                    </blockquote>
+                    <p class="md-title-large md-text-primary" style="margin-top: var(--md-spacing-lg);">- Familia González</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured News -->
+    <section class="section" id="noticias">
+        <div class="section-container">
+            <h3 class="md-display-small md-text-primary fade-in-up" style="text-align: center;">Noticia Destacada 📰</h3>
+            
+            <article class="news-card md-card md-card-elevated md-hover fade-in-up">
+                <img src="https://via.placeholder.com/600x300?text=Rescate+de+Perrito" 
+                     alt="Perrito rescatado sonriendo" 
+                     class="news-image md-card-media">
+                <div class="md-card-content">
+                    <h4 class="md-headline-medium md-text-primary">¡Rescatamos a Max!</h4>
+                    <p class="md-body-large" style="margin-top: var(--md-spacing-md);">
+                        Max, un cachorro de 3 meses, fue encontrado abandonado. Ahora está sano y listo para su familia perfecta. ¡Ven a conocerlo!
+                    </p>
+                    <time class="news-date md-body-small md-text-on-surface-variant">Hace 2 días</time>
+                </div>
+                <div class="md-card-footer">
+                    <a href="login.php" class="md-button md-button-filled">Conocer a Max</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Google Maps -->
+    <section class="section section-alt" id="contacto">
+        <div class="section-container">
+            <h3 class="md-display-small md-text-primary fade-in-up" style="text-align: center;">Encuéntranos 📍</h3>
+            <p class="md-body-large fade-in-up" style="text-align: center; margin-top: var(--md-spacing-md);">
+                Visítanos en nuestra ubicación para conocer a nuestros rescatados.
+            </p>
+            <div class="map-container fade-in-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.0000000000005!2d-79.5167!3d8.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca8b9c1b6c6c7%3A0x1234567890abcdef!2sCalle%20de%20las%20Patitas%2C%20Ciudad%20de%20los%20Animales!5e0!3m2!1sen!2sus!4v1234567890!5m2!1sen!2sus" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    title="Ubicación de Patitas Felices">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redes Sociales -->
+    <section class="section">
+        <div class="section-container">
+            <h3 class="md-display-small md-text-primary fade-in-up" style="text-align: center;">Síguenos en Redes Sociales 🌟</h3>
+            <p class="md-body-large fade-in-up" style="text-align: center; margin-top: var(--md-spacing-md);">
+                Mantente al día con nuestras historias de rescate, consejos de cuidado y eventos especiales.
+            </p>
+            
+            <div class="social-links fade-in-up">
+                <a href="https://www.facebook.com/patitasfelices" 
+                   target="_blank" 
+                   class="social-button md-bg-primary md-elevation-2"
+                   style="color: var(--md-on-primary);"
+                   aria-label="Síguenos en Facebook">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                
+                <a href="https://www.instagram.com/patitasfelices" 
+                   target="_blank" 
+                   class="social-button md-bg-secondary md-elevation-2"
+                   style="color: var(--md-on-secondary);"
+                   aria-label="Síguenos en Instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M12.017 0C8.396 0 7.966.017 6.677.072 5.39.126 4.439.278 3.64.528c-.81.254-1.5.595-2.18 1.275C.78 2.583.44 3.273.186 4.083c-.25.8-.402 1.75-.456 3.037C-.029 8.41 0 8.84 0 12.46s-.017 4.05.072 5.339c.054 1.287.206 2.238.456 3.037.254.81.595 1.5 1.275 2.18.68.68 1.37 1.021 2.18 1.275.8.25 1.75.402 3.037.456 1.289.055 1.719.072 5.34.072s4.05-.017 5.339-.072c1.287-.054 2.238-.206 3.037-.456.81-.254 1.5-.595 2.18-1.275.68-.68 1.021-1.37 1.275-2.18.25-.8.402-1.75.456-3.037.055-1.289.072-1.719.072-5.34s.017-4.05-.072-5.339c-.054-1.287-.206-2.238-.456-3.037-.254-.81-.595-1.5-1.275-2.18C21.417.78 20.727.44 19.917.186c-.8-.25-1.75-.402-3.037-.456C16.05-.029 15.62 0 12 0zm0 2.163c3.574 0 3.997.014 5.406.078 1.303.061 2.026.276 2.51.46.62.235 1.063.516 1.527.98.464.464.745.907.98 1.527.184.484.399 1.207.46 2.51.064 1.409.078 1.832.078 5.406s-.014 3.997-.078 5.406c-.061 1.303-.276 2.026-.46 2.51-.235.62-.516 1.063-.98 1.527-.464.464-.907.745-1.527.98-.484.184-1.207.399-2.51.46-1.409.064-1.832.078-5.406.078s-3.997-.014-5.406-.078c-1.303-.061-2.026-.276-2.51-.46-.62-.235-1.063-.516-1.527-.98-.464-.464-.745-.907-.98-1.527-.184-.484-.399-1.207-.46-2.51C2.177 16.057 2.163 15.634 2.163 12s.014-3.997.078-5.406c.061-1.303.276-2.026.46-2.51.235-.62.516-1.063.98-1.527.464-.464.907-.745 1.527-.98.484-.184 1.207-.399 2.51-.46 1.409-.064 1.832-.078 5.406-.078zm0 3.897c-3.69 0-6.673 2.983-6.673 6.673s2.983 6.673 6.673 6.673 6.673-2.983 6.673-6.673-2.983-6.673-6.673-6.673zm0 11c-2.397 0-4.34-1.943-4.34-4.34s1.943-4.34 4.34-4.34 4.34 1.943 4.34 4.34-1.943 4.34-4.34 4.34zm8.448-11.407c-.814 0-1.476-.662-1.476-1.476s.662-1.476 1.476-1.476 1.476.662 1.476 1.476-.662 1.476-1.476 1.476z"/>
+                    </svg>
+                </a>
+                
+                <a href="https://www.twitter.com/patitasfelices" 
+                   target="_blank" 
+                   class="social-button md-bg-accent md-elevation-2"
+                   style="color: var(--md-on-accent);"
+                   aria-label="Síguenos en Twitter">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <p class="md-body-large">&copy; 2024 Patitas Felices. Todos los derechos reservados.</p>
+            <p class="md-body-medium" style="margin-top: var(--md-spacing-sm); opacity: 0.9;">
+                Fundación dedicada al rescate y adopción de animales. | Política de Privacidad | Términos de Servicio
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Microinteracciones suaves
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer para animaciones de entrada
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todos los elementos con animación
+            document.querySelectorAll('.fade-in-up').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Efecto hover mejorado para botones
+            document.querySelectorAll('.md-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Efecto parallax sutil en hero
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * 0.5;
+                    hero.style.transform = `translate3d(0, ${rate}px, 0)`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

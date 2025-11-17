@@ -1,0 +1,18 @@
+:root {
+  --primary: #0D3B66;
+  --secondary: #EE964B;
+  --tertiary: #F4D35E;
+  --accent: #F95738;
+  --background: #FAF0CA;
+  --success: #4CAF50;
+  --warning: #FFC107;
+  --error: #D32F2F;
+  --info: #0288D1;
+  --disabled: #9E9E9E;
+  --text-main: #000000;
+  --text-secondary: #6B7280;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

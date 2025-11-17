@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Material Design 3 - Patitas Felices</title>
+  <link rel="stylesheet" href="/css/material-design.css">
+  <style>
+    body {
+      background-color: var(--md-background);
+      padding: var(--md-spacing-xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .demo-section {
+      margin-bottom: var(--md-spacing-2xl);
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--md-spacing-lg);
+      margin-top: var(--md-spacing-lg);
+    }
+    .demo-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--md-spacing-md);
+      margin-top: var(--md-spacing-lg);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Header -->
+  <header class="md-surface-container-high md-p-xl md-rounded-xl md-m-lg">
+    <h1 class="md-display-medium md-text-primary">Material Design 3 System</h1>
+    <p class="md-body-large md-text-on-surface-variant">
+      Sistema de diseño centralizado para Patitas Felices
+    </p>
+  </header>
+
+  <!-- Typography Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Tipografía</h2>
+    
+    <div style="margin-top: var(--md-spacing-lg);">
+      <p class="md-display-large">Display Large</p>
+      <p class="md-display-medium">Display Medium</p>
+      <p class="md-display-small">Display Small</p>
+      <p class="md-headline-large">Headline Large</p>
+      <p class="md-headline-medium">Headline Medium</p>
+      <p class="md-headline-small">Headline Small</p>
+      <p class="md-title-large">Title Large</p>
+      <p class="md-title-medium">Title Medium</p>
+      <p class="md-title-small">Title Small</p>
+      <p class="md-body-large">Body Large - Texto principal de lectura</p>
+      <p class="md-body-medium">Body Medium - Texto secundario</p>
+      <p class="md-body-small">Body Small - Texto auxiliar</p>
+      <p class="md-label-large">Label Large</p>
+      <p class="md-label-medium">Label Medium</p>
+      <p class="md-label-small">Label Small</p>
+    </div>
+  </section>
+
+  <!-- Colors Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Paleta de Colores</h2>
+    
+    <div class="demo-grid">
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-primary md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Primary</p>
+        <p class="md-body-small md-text-on-surface-variant">#0D3B66</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-secondary md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Secondary</p>
+        <p class="md-body-small md-text-on-surface-variant">#EE964B</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-tertiary md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Tertiary</p>
+        <p class="md-body-small md-text-on-surface-variant">#F4D35E</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-accent md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Accent</p>
+        <p class="md-body-small md-text-on-surface-variant">#F95738</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-success md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Success</p>
+        <p class="md-body-small md-text-on-surface-variant">#4CAF50</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-error md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Error</p>
+        <p class="md-body-small md-text-on-surface-variant">#D32F2F</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-warning md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Warning</p>
+        <p class="md-body-small md-text-on-surface-variant">#FFC107</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-bg-info md-rounded-md" style="height: 80px; margin-bottom: var(--md-spacing-md);"></div>
+        <p class="md-title-medium">Info</p>
+        <p class="md-body-small md-text-on-surface-variant">#0288D1</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Botones</h2>
+    
+    <h3 class="md-title-large" style="margin-top: var(--md-spacing-lg);">Tipos de Botones</h3>
+    <div class="demo-buttons">
+      <button class="md-button md-button-filled">Filled Button</button>
+      <button class="md-button md-button-filled-tonal">Filled Tonal</button>
+      <button class="md-button md-button-outlined">Outlined Button</button>
+      <button class="md-button md-button-text">Text Button</button>
+      <button class="md-button md-button-elevated">Elevated Button</button>
+    </div>
+    
+    <h3 class="md-title-large" style="margin-top: var(--md-spacing-xl);">Variantes de Color</h3>
+    <div class="demo-buttons">
+      <button class="md-button md-button-filled">Primary</button>
+      <button class="md-button md-button-filled md-button-secondary">Secondary</button>
+      <button class="md-button md-button-filled md-button-accent">Accent</button>
+      <button class="md-button md-button-filled md-button-success">Success</button>
+      <button class="md-button md-button-filled md-button-error">Error</button>
+    </div>
+    
+    <h3 class="md-title-large" style="margin-top: var(--md-spacing-xl);">Tamaños</h3>
+    <div class="demo-buttons">
+      <button class="md-button md-button-filled md-button-small">Small</button>
+      <button class="md-button md-button-filled">Normal</button>
+      <button class="md-button md-button-filled md-button-large">Large</button>
+    </div>
+    
+    <h3 class="md-title-large" style="margin-top: var(--md-spacing-xl);">Estados</h3>
+    <div class="demo-buttons">
+      <button class="md-button md-button-filled">Normal</button>
+      <button class="md-button md-button-filled" disabled>Disabled</button>
+    </div>
+  </section>
+
+  <!-- Inputs Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Inputs y Formularios</h2>
+    
+    <div style="max-width: 600px; margin-top: var(--md-spacing-lg);">
+      <div class="md-input-container">
+        <label class="md-input-label" for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" class="md-input" placeholder="Ingresa tu nombre">
+        <span class="md-input-helper">Este campo es requerido</span>
+      </div>
+      
+      <div class="md-input-container">
+        <label class="md-input-label" for="email">Correo Electrónico</label>
+        <input type="email" id="email" class="md-input md-input-success" placeholder="correo@ejemplo.com" value="usuario@ejemplo.com">
+        <span class="md-input-helper md-input-success-text">Email válido</span>
+      </div>
+      
+      <div class="md-input-container">
+        <label class="md-input-label" for="email-error">Email con Error</label>
+        <input type="email" id="email-error" class="md-input md-input-error" placeholder="correo@ejemplo.com" value="email-invalido">
+        <span class="md-input-helper md-input-error-text">Por favor ingresa un email válido</span>
+      </div>
+      
+      <div class="md-input-container">
+        <label class="md-input-label" for="tipo">Tipo de Animal</label>
+        <select id="tipo" class="md-input md-select">
+          <option>Selecciona una opción</option>
+          <option>Perro</option>
+          <option>Gato</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      
+      <div class="md-input-container">
+        <label class="md-input-label" for="descripcion">Descripción</label>
+        <textarea id="descripcion" class="md-input md-textarea" placeholder="Describe tu experiencia con mascotas..."></textarea>
+      </div>
+      
+      <div class="md-input-container">
+        <label>
+          <input type="checkbox" class="md-checkbox">
+          <span class="md-label-medium">Acepto los términos y condiciones</span>
+        </label>
+      </div>
+      
+      <div class="md-input-container">
+        <label>
+          <input type="radio" name="animal" class="md-radio">
+          <span class="md-label-medium">Perro</span>
+        </label>
+        <label style="margin-left: var(--md-spacing-md);">
+          <input type="radio" name="animal" class="md-radio">
+          <span class="md-label-medium">Gato</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Cards</h2>
+    
+    <div class="demo-grid">
+      <div class="md-card md-card-elevated md-hover">
+        <div style="background: linear-gradient(135deg, var(--md-primary), var(--md-secondary)); height: 150px;"></div>
+        <div class="md-card-content">
+          <h3 class="md-title-large">Card Elevada</h3>
+          <p class="md-body-medium md-text-on-surface-variant">
+            Card con sombra y efecto hover
+          </p>
+        </div>
+        <div class="md-card-footer md-flex md-justify-between">
+          <button class="md-button md-button-text">Ver Más</button>
+          <button class="md-button md-button-filled">Acción</button>
+        </div>
+      </div>
+      
+      <div class="md-card md-card-filled">
+        <div class="md-card-content">
+          <h3 class="md-title-large">Card Rellena</h3>
+          <p class="md-body-medium md-text-on-surface-variant">
+            Card con fondo de color
+          </p>
+        </div>
+      </div>
+      
+      <div class="md-card md-card-outlined">
+        <div class="md-card-header">
+          <h3 class="md-title-medium">Card con Borde</h3>
+        </div>
+        <div class="md-card-content">
+          <p class="md-body-medium">
+            Card con borde y header separado
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Elevation Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Sistema de Elevación</h2>
+    
+    <div class="demo-grid">
+      <div class="md-surface md-elevation-0 md-p-lg md-rounded-md">
+        <p class="md-title-medium">Elevation 0</p>
+        <p class="md-body-small md-text-on-surface-variant">Sin sombra</p>
+      </div>
+      
+      <div class="md-surface md-elevation-1 md-p-lg md-rounded-md">
+        <p class="md-title-medium">Elevation 1</p>
+        <p class="md-body-small md-text-on-surface-variant">Sombra sutil</p>
+      </div>
+      
+      <div class="md-surface md-elevation-2 md-p-lg md-rounded-md">
+        <p class="md-title-medium">Elevation 2</p>
+        <p class="md-body-small md-text-on-surface-variant">Sombra media</p>
+      </div>
+      
+      <div class="md-surface md-elevation-3 md-p-lg md-rounded-md">
+        <p class="md-title-medium">Elevation 3</p>
+        <p class="md-body-small md-text-on-surface-variant">Sombra notable</p>
+      </div>
+      
+      <div class="md-surface md-elevation-4 md-p-lg md-rounded-md">
+        <p class="md-title-medium">Elevation 4</p>
+        <p class="md-body-small md-text-on-surface-variant">Sombra alta</p>
+      </div>
+      
+      <div class="md-surface md-elevation-5 md-p-lg md-rounded-md">
+        <p class="md-title-medium">Elevation 5</p>
+        <p class="md-body-small md-text-on-surface-variant">Sombra máxima</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animations Section -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Animaciones</h2>
+    
+    <div class="demo-grid">
+      <div class="md-card md-card-elevated md-p-lg md-fade-in">
+        <p class="md-title-medium">Fade In</p>
+        <p class="md-body-small md-text-on-surface-variant">Aparece gradualmente</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg md-slide-up">
+        <p class="md-title-medium">Slide Up</p>
+        <p class="md-body-small md-text-on-surface-variant">Se desliza hacia arriba</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg md-scale-in">
+        <p class="md-title-medium">Scale In</p>
+        <p class="md-body-small md-text-on-surface-variant">Crece desde el centro</p>
+      </div>
+      
+      <div class="md-card md-card-elevated md-p-lg">
+        <div class="md-pulse" style="width: 40px; height: 40px; background: var(--md-primary); border-radius: 50%; margin-bottom: var(--md-spacing-sm);"></div>
+        <p class="md-title-medium">Pulse</p>
+        <p class="md-body-small md-text-on-surface-variant">Pulso continuo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Example: Animal Card -->
+  <section class="demo-section md-surface md-p-xl md-rounded-lg md-elevation-2">
+    <h2 class="md-headline-large md-text-primary">Ejemplo: Card de Animal</h2>
+    
+    <div style="max-width: 400px; margin-top: var(--md-spacing-lg);">
+      <div class="md-card md-card-elevated md-hover">
+        <div style="background: linear-gradient(135deg, #FFB6C1, #FFA07A); height: 250px; display: flex; align-items: center; justify-content: center;">
+          <span class="md-display-medium" style="font-size: 80px;">🐕</span>
+        </div>
+        
+        <div class="md-card-content">
+          <h3 class="md-title-large md-text-primary">Max</h3>
+          <p class="md-body-medium md-text-on-surface-variant">
+            Labrador · 2 años · Macho
+          </p>
+          
+          <div class="md-flex md-gap-sm" style="margin: var(--md-spacing-md) 0;">
+            <span class="md-label-small md-bg-success md-text-on-success" style="padding: 4px 12px; border-radius: 16px;">
+              Vacunado
+            </span>
+            <span class="md-label-small md-bg-info md-text-on-info" style="padding: 4px 12px; border-radius: 16px;">
+              Esterilizado
+            </span>
+          </div>
+          
+          <p class="md-body-small">
+            Max es un perro juguetón y cariñoso que busca un hogar lleno de amor. Le encanta jugar y es muy sociable con otros animales.
+          </p>
+        </div>
+        
+        <div class="md-card-footer md-flex md-justify-between">
+          <button class="md-button md-button-text">Ver Más</button>
+          <button class="md-button md-button-filled">Adoptar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="md-surface-container md-p-xl md-rounded-lg md-text-center">
+    <p class="md-body-medium md-text-on-surface-variant">
+      Material Design 3 System - Patitas Felices © 2025
+    </p>
+    <p class="md-body-small md-text-on-surface-variant">
+      Sistema de diseño centralizado basado en Material Design 3
+    </p>
+  </footer>
+
+</body>
+</html>
