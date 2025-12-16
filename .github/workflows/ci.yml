@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_db
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: pdo, pdo_mysql
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Setup test database
+        run: |
+          mysql -h 127.0.0.1 -u root -proot test_db < db/schema.sql
+          mysql -h 127.0.0.1 -u root -proot test_db < db/seed.sql
+
+      - name: Run tests
+        run: vendor/bin/phpunit --verbose

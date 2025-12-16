@@ -1,0 +1,21 @@
+{
+    "name": "patitas-felices/patitas-felices",
+    "description": "Sistema de gestión para refugio de animales",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PatitasFelices\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PatitasFelices\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
