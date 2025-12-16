@@ -110,7 +110,8 @@ abstract class BaseTestCase extends TestCase {
         $this->pdo->exec("INSERT INTO UBICACION (id_ubicacion, nombre_ubicacion, descripcion) VALUES
             (1, 'Fundación', 'Instalaciones principales de la fundación'),
             (2, 'Hogar Temporal', 'Casa de familia temporal'),
-            (3, 'Veterinario', 'Clínica veterinaria asociada')");
+            (3, 'Veterinario', 'Clínica veterinaria asociada'),
+            (4, 'Refugio', 'Refugio temporal para animales rescatados')");
 
         // Insertar usuarios de test
         $this->pdo->exec("INSERT INTO USUARIO (
@@ -122,13 +123,16 @@ abstract class BaseTestCase extends TestCase {
             (2, 'Carlos', 'Coord', 'carlos.coord@test.com', '6000-0002', 'Ciudad Test',
              'hash_test', '2025-01-01 09:05:00', 'ACTIVA'),
             (3, 'Lucía', 'Vet', 'lucia.vet@test.com', '6000-0003', 'Ciudad Test',
-             'hash_test', '2025-01-01 09:10:00', 'ACTIVA')");
+             'hash_test', '2025-01-01 09:10:00', 'ACTIVA'),
+            (4, 'Mario', 'Voluntario', 'mario.vol@test.com', '6000-0004', 'Ciudad Test',
+             'hash_test', '2025-01-01 09:15:00', 'ACTIVA')");
 
         // Asignar roles
         $this->pdo->exec("INSERT INTO USUARIO_ROL (id_usuario, id_rol, fecha_asignacion) VALUES
             (1, 1, '2025-01-01 09:00:00'), -- Ana Adoptante
             (2, 3, '2025-01-01 09:05:00'), -- Carlos Coord Adop
-            (3, 5, '2025-01-01 09:10:00')"); // Lucía Vet
+            (3, 5, '2025-01-01 09:10:00'), -- Lucía Vet
+            (4, 2, '2025-01-01 09:15:00')"); // Mario Voluntario
     }
 
     /**
@@ -234,23 +238,28 @@ abstract class BaseTestCase extends TestCase {
         $datosDefault = [
             'titulo' => 'Actividad Test',
             'descripcion' => 'Descripción de actividad de prueba',
-            'fecha' => '2025-02-01',
+            'fecha_actividad' => '2025-02-01',
             'hora_inicio' => '09:00:00',
             'hora_fin' => '12:00:00',
             'lugar' => 'Fundación',
-            'cupo_maximo' => 10,
-            'cupo_actual' => 0,
-            'estado_actividad' => 'Programada'
+            'voluntarios_requeridos' => 10,
+            'requisitos' => null,
+            'beneficios' => null,
+            'es_urgente' => 0,
+            'id_coordinador' => 2, // Carlos Coord
+            'fecha_creacion' => '2025-01-01 10:00:00'
         ];
 
         $datos = array_merge($datosDefault, $datosPersonalizados);
 
         $sql = "INSERT INTO ACTIVIDAD_VOLUNTARIADO (
-            titulo, descripcion, fecha, hora_inicio, hora_fin,
-            lugar, cupo_maximo, cupo_actual, estado_actividad
+            titulo, descripcion, fecha_actividad, hora_inicio, hora_fin,
+            lugar, voluntarios_requeridos, requisitos, beneficios, es_urgente,
+            id_coordinador, fecha_creacion
         ) VALUES (
-            :titulo, :descripcion, :fecha, :hora_inicio, :hora_fin,
-            :lugar, :cupo_maximo, :cupo_actual, :estado_actividad
+            :titulo, :descripcion, :fecha_actividad, :hora_inicio, :hora_fin,
+            :lugar, :voluntarios_requeridos, :requisitos, :beneficios, :es_urgente,
+            :id_coordinador, :fecha_creacion
         )";
 
         $stmt = $this->pdo->prepare($sql);

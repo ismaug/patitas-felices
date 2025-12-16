@@ -148,13 +148,17 @@ CREATE TABLE ACTIVIDAD_VOLUNTARIADO (
     id_actividad INT PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(100) NOT NULL,
     descripcion TEXT,
-    fecha DATE NOT NULL,
+    fecha_actividad DATE NOT NULL,
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
     lugar VARCHAR(150) NOT NULL,
-    cupo_maximo INT NOT NULL,
-    cupo_actual INT NOT NULL,
-    estado_actividad VARCHAR(30) NOT NULL
+    voluntarios_requeridos INT NOT NULL,
+    requisitos TEXT,
+    beneficios TEXT,
+    es_urgente TINYINT(1) DEFAULT 0,
+    id_coordinador INT NOT NULL,
+    fecha_creacion DATETIME NOT NULL,
+    FOREIGN KEY (id_coordinador) REFERENCES USUARIO(id_usuario)
 );
 
 -- Tabla INSCRIPCION_VOLUNTARIADO
@@ -163,8 +167,9 @@ CREATE TABLE INSCRIPCION_VOLUNTARIADO (
     id_actividad INT NOT NULL,
     id_voluntario INT NOT NULL,
     fecha_inscripcion DATETIME NOT NULL,
-    horas_realizadas DECIMAL(4,2),
-    estado_inscripcion VARCHAR(30) NOT NULL,
+    horas_registradas DECIMAL(4,2),
+    estado VARCHAR(30) NOT NULL,
+    comentarios TEXT,
     FOREIGN KEY (id_actividad) REFERENCES ACTIVIDAD_VOLUNTARIADO(id_actividad),
     FOREIGN KEY (id_voluntario) REFERENCES USUARIO(id_usuario)
 );

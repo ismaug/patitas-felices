@@ -19,10 +19,20 @@ class CU12Test extends BaseTestCase {
         $idAnimal1 = $this->crearAnimalTest(['tipo_animal' => 'Perro', 'id_estado_actual' => 4]); // Adoptado
         $idAnimal2 = $this->crearAnimalTest(['tipo_animal' => 'Gato', 'id_estado_actual' => 4]); // Adoptado
 
+        // Crear solicitudes de adopción primero
+        $idSolicitud1 = $this->crearSolicitudTest($idAnimal1, 1, [
+            'fecha_solicitud' => '2025-01-05 10:00:00',
+            'estado_solicitud' => 'Aprobada'
+        ]);
+        $idSolicitud2 = $this->crearSolicitudTest($idAnimal2, 1, [
+            'fecha_solicitud' => '2025-01-10 10:00:00',
+            'estado_solicitud' => 'Aprobada'
+        ]);
+
         // Crear adopciones
         $this->pdo->exec("INSERT INTO ADOPCION (id_solicitud, fecha_adopcion, observaciones) VALUES
-            (1, '2025-01-10', 'Adopción exitosa'),
-            (2, '2025-01-15', 'Segunda adopción del período')");
+            ({$idSolicitud1}, '2025-01-10', 'Adopción exitosa'),
+            ({$idSolicitud2}, '2025-01-15', 'Segunda adopción del período')");
 
         $servicio = new ServicioAdopciones();
 
