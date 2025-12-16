@@ -18,7 +18,7 @@ class CU11Test extends BaseTestCase {
         // Crear una actividad futura con cupos
         $idActividad = $this->crearActividadTest([
             'titulo' => 'Actividad Test Inscripción',
-            'fecha_actividad' => '2025-02-01',
+            'fecha_actividad' => '2026-02-01',
             'voluntarios_requeridos' => 5
         ]);
 
@@ -79,7 +79,7 @@ class CU11Test extends BaseTestCase {
         // Crear actividad e inscribir voluntario
         $idActividad = $this->crearActividadTest([
             'titulo' => 'Actividad Test Cancelación',
-            'fecha_actividad' => '2025-02-01',
+            'fecha_actividad' => '2026-02-01',
             'voluntarios_requeridos' => 5
         ]);
 

@@ -238,7 +238,7 @@ abstract class BaseTestCase extends TestCase {
         $datosDefault = [
             'titulo' => 'Actividad Test',
             'descripcion' => 'Descripción de actividad de prueba',
-            'fecha_actividad' => '2025-02-01',
+            'fecha_actividad' => '2026-02-01',
             'hora_inicio' => '09:00:00',
             'hora_fin' => '12:00:00',
             'lugar' => 'Fundación',
