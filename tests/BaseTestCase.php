@@ -123,7 +123,7 @@ abstract class BaseTestCase extends TestCase {
         $this->pdo->exec("INSERT INTO USUARIO_ROL (id_usuario, id_rol, fecha_asignacion) VALUES
             (1, 1, '2025-01-01 09:00:00'), -- Ana Adoptante
             (2, 3, '2025-01-01 09:05:00'), -- Carlos Coord Adop
-            (3, 5, '2025-01-01 09:10:00')"); -- Lucía Vet
+            (3, 5, '2025-01-01 09:10:00')"); // Lucía Vet
     }
 
     /**
