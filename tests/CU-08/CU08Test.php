@@ -27,7 +27,7 @@ class CU08Test extends BaseTestCase {
             'tipo_registro' => 'Consulta',
             'descripcion' => 'Primera consulta veterinaria. Animal en buen estado general.',
             'peso' => 4.5,
-            'proxima_cita' => '2025-07-10'
+            'proxima_cita' => '2026-07-10'
         ];
 
         echo "ID Animal: {$idAnimal}\n";
@@ -80,7 +80,7 @@ class CU08Test extends BaseTestCase {
             'tipo_registro' => 'Control',
             'descripcion' => 'Control post-vacunación. Animal saludable.',
             'peso' => 15.3,
-            'proxima_cita' => '2025-07-12'
+            'proxima_cita' => '2026-07-12'
         ];
 
         echo "Segundo registro médico (historial ya existe)...\n";
