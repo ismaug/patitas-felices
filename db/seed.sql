@@ -357,46 +357,47 @@ INSERT INTO SEGUIMIENTO_ANIMAL (
 
 -- 11. Actividad de voluntariado
 INSERT INTO ACTIVIDAD_VOLUNTARIADO (
-    id_actividad, titulo, descripcion, fecha, hora_inicio, hora_fin,
-    lugar, cupo_maximo, cupo_actual, estado_actividad
+    id_actividad, titulo, descripcion, fecha_actividad, hora_inicio, hora_fin,
+    lugar, voluntarios_requeridos, requisitos, beneficios, es_urgente,
+    id_coordinador, fecha_creacion
 ) VALUES
 (1, 'Jornada de Paseo de Perros',
   'Actividad para pasear perros de la fundación en el parque.',
   '2025-02-10', '09:00:00', '12:00:00',
-  'Parque Central', 10, 1, 'Programada'),
+  'Parque Central', 10, 'Ropa cómoda y calzado deportivo.', 'Convivencia con animales y ejercicio al aire libre.', 0, 2, '2025-01-20 10:00:00'),
 (2, 'Taller de Educación sobre Adopción',
   'Sesión informativa sobre responsabilidad en adopciones.',
   '2025-03-15', '14:00:00', '16:00:00',
-  'Sala de Conferencias', 20, 5, 'Programada'),
+  'Sala de Conferencias', 20, 'Interés en adopción responsable.', 'Conocimiento sobre cuidado de mascotas.', 0, 2, '2025-02-15 11:00:00'),
 (3, 'Limpieza de Instalaciones',
   'Voluntariado para mantenimiento de la fundación.',
   '2025-02-20', '08:00:00', '11:00:00',
-  'Fundación', 15, 8, 'En Curso'),
+  'Fundación', 15, 'Disposición para trabajo físico.', 'Contribución directa al bienestar animal.', 0, 8, '2025-02-01 12:00:00'),
 (4, 'Campaña de Recolección de Donaciones',
   'Evento para recaudar fondos.',
   '2025-04-01', '10:00:00', '15:00:00',
-  'Centro Comunitario', 25, 12, 'Completada'),
+  'Centro Comunitario', 25, 'Habilidades de comunicación.', 'Apoyo a la causa y networking.', 0, 2, '2025-03-10 13:00:00'),
 (5, 'Visita a Refugios Asociados',
   'Actividades canceladas por lluvia.',
   '2025-03-05', '09:00:00', '13:00:00',
-  'Varios refugios', 8, 0, 'Cancelada');
+  'Varios refugios', 8, 'Disponibilidad de transporte.', 'Conocer otros refugios y compartir experiencias.', 0, 8, '2025-02-20 14:00:00');
 
 -- 12. Inscripción a la actividad
 INSERT INTO INSCRIPCION_VOLUNTARIADO (
     id_inscripcion, id_actividad, id_voluntario, fecha_inscripcion,
-    horas_realizadas, estado_inscripcion
+    horas_registradas, estado, comentarios
 ) VALUES
-(1, 1, 4, '2025-01-25 10:00:00', NULL, 'Inscrito'),
-(2, 2, 9, '2025-03-01 11:00:00', NULL, 'Inscrito'),
-(3, 2, 14, '2025-03-02 12:00:00', NULL, 'Inscrito'),
-(4, 2, 15, '2025-03-03 13:00:00', NULL, 'Inscrito'),
-(5, 3, 4, '2025-02-15 14:00:00', 3.5, 'Completado'),
-(6, 3, 6, '2025-02-16 15:00:00', 3.0, 'Completado'),
-(7, 3, 9, '2025-02-17 16:00:00', 2.5, 'Completado'),
-(8, 3, 14, '2025-02-18 17:00:00', 3.0, 'Completado'),
-(9, 4, 4, '2025-03-20 18:00:00', 5.0, 'Completado'),
-(10, 4, 6, '2025-03-21 19:00:00', 4.5, 'Completado'),
-(11, 4, 9, '2025-03-22 20:00:00', 5.0, 'Completado'),
-(12, 4, 14, '2025-03-23 21:00:00', 4.0, 'Completado'),
-(13, 4, 15, '2025-03-24 22:00:00', 4.5, 'Completado'),
-(14, 4, 16, '2025-03-25 23:00:00', 5.0, 'Completado');
+(1, 1, 4, '2025-01-25 10:00:00', NULL, 'Inscrito', NULL),
+(2, 2, 9, '2025-03-01 11:00:00', NULL, 'Inscrito', NULL),
+(3, 2, 14, '2025-03-02 12:00:00', NULL, 'Inscrito', NULL),
+(4, 2, 15, '2025-03-03 13:00:00', NULL, 'Inscrito', NULL),
+(5, 3, 4, '2025-02-15 14:00:00', 3.5, 'Completado', 'Excelente participación.'),
+(6, 3, 6, '2025-02-16 15:00:00', 3.0, 'Completado', 'Buen trabajo.'),
+(7, 3, 9, '2025-02-17 16:00:00', 2.5, 'Completado', 'Participación activa.'),
+(8, 3, 14, '2025-02-18 17:00:00', 3.0, 'Completado', 'Muy comprometido.'),
+(9, 4, 4, '2025-03-20 18:00:00', 5.0, 'Completado', 'Liderazgo destacado.'),
+(10, 4, 6, '2025-03-21 19:00:00', 4.5, 'Completado', 'Gran apoyo.'),
+(11, 4, 9, '2025-03-22 20:00:00', 5.0, 'Completado', 'Excelente desempeño.'),
+(12, 4, 14, '2025-03-23 21:00:00', 4.0, 'Completado', 'Buena colaboración.'),
+(13, 4, 15, '2025-03-24 22:00:00', 4.5, 'Completado', 'Muy dedicado.'),
+(14, 4, 16, '2025-03-25 23:00:00', 5.0, 'Completado', 'Participación ejemplar.');
