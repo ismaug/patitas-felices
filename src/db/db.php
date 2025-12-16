@@ -12,10 +12,27 @@
  */
 function get_db_connection(): PDO {
     try {
-        // Intentar cargar config.local.php primero, luego config.php como fallback
-        $configPath = __DIR__ . '/../config/config.local.php';
-        if (!file_exists($configPath)) {
-            $configPath = __DIR__ . '/../config/config.php';
+        // Prioridad de carga de configuración:
+        // 1. config.test.php (si estamos en entorno de testing)
+        // 2. config.local.php (desarrollo local)
+        // 3. config.php (fallback)
+        
+        $configPath = null;
+        
+        // Detectar si estamos en entorno de testing
+        if (defined('PHPUNIT_RUNNING') || getenv('CI') === 'true') {
+            $testConfigPath = __DIR__ . '/../config/config.test.php';
+            if (file_exists($testConfigPath)) {
+                $configPath = $testConfigPath;
+            }
+        }
+        
+        // Si no es test o no existe config.test.php, usar config.local.php o config.php
+        if ($configPath === null) {
+            $configPath = __DIR__ . '/../config/config.local.php';
+            if (!file_exists($configPath)) {
+                $configPath = __DIR__ . '/../config/config.php';
+            }
         }
         
         if (!file_exists($configPath)) {

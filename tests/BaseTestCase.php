@@ -7,6 +7,11 @@
  * asegurando aislamiento y limpieza automática.
  */
 
+// Definir constante para indicar que estamos en entorno de testing
+if (!defined('PHPUNIT_RUNNING')) {
+    define('PHPUNIT_RUNNING', true);
+}
+
 require_once __DIR__ . '/../src/db/db.php';
 require_once __DIR__ . '/../src/models/ServiceResult.php';
 

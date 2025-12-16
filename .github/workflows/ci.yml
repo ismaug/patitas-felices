@@ -15,7 +15,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: test_db
+          MYSQL_DATABASE: patitas_felices_test
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -34,8 +34,8 @@ jobs:
 
       - name: Setup test database
         run: |
-          mysql -h 127.0.0.1 -u root -proot test_db < db/schema.sql
-          mysql -h 127.0.0.1 -u root -proot test_db < db/seed.sql
+          mysql -h 127.0.0.1 -u root -proot patitas_felices_test < db/schema.sql
+          mysql -h 127.0.0.1 -u root -proot patitas_felices_test < db/seed.sql
 
       - name: Run tests
         run: vendor/bin/phpunit --verbose
