@@ -3,6 +3,9 @@
  * Tests para CU-03: Registrar Animal Rescatado
  * Sistema de Gestión de Adopción de Animales - Patitas Felices
  */
+   /**
+     *PRUEBA 1
+     */
 
 require_once __DIR__ . '/../BaseTestCase.php';
 require_once __DIR__ . '/../../src/services/ServicioAnimales.php';
