@@ -321,11 +321,21 @@ class ServicioVoluntariado {
      */
     public function listarActividadesDisponibles(array $filtros = []): ServiceResult {
         try {
+            error_log("=== ServicioVoluntariado::listarActividadesDisponibles ===");
+            error_log("Filtros recibidos: " . json_encode($filtros));
+            
             // Forzar filtros para actividades disponibles
             $filtros['estado'] = 'futuras';
             $filtros['con_cupos'] = true;
+            
+            error_log("Filtros después de forzar: " . json_encode($filtros));
 
             $actividades = $this->repositorio->listarActividades($filtros, 100, 0);
+            
+            error_log("Actividades obtenidas del repositorio: " . count($actividades));
+            if (count($actividades) > 0) {
+                error_log("Primera actividad: " . json_encode($actividades[0]));
+            }
 
             return ServiceResult::success(
                 'Actividades disponibles obtenidas exitosamente',
@@ -337,13 +347,15 @@ class ServicioVoluntariado {
             );
 
         } catch (PDOException $e) {
-            error_log("Error en listarActividadesDisponibles: " . $e->getMessage());
+            error_log("Error PDO en listarActividadesDisponibles: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
             return ServiceResult::error(
                 'Error al listar las actividades',
-                ['database' => 'Error de conexión o consulta']
+                ['database' => 'Error de conexión o consulta: ' . $e->getMessage()]
             );
         } catch (Exception $e) {
             error_log("Error inesperado en listarActividadesDisponibles: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
             return ServiceResult::error(
                 'Error inesperado al listar las actividades',
                 ['system' => $e->getMessage()]

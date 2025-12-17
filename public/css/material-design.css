@@ -348,12 +348,13 @@ body {
 /* Filled Button (Primary) */
 .md-button-filled {
   background-color: var(--md-primary);
-  color: var(--md-on-primary);
+  color: #ffffff !important; /* Texto blanco para mejor contraste */
   box-shadow: var(--md-elevation-1);
 }
 
 .md-button-filled:hover:not(:disabled) {
   background-color: var(--md-primary-container);
+  color: #ffffff !important; /* Mantener texto blanco en hover */
   box-shadow: var(--md-elevation-2);
   transform: translateY(-1px);
 }
@@ -422,24 +423,53 @@ body {
 }
 
 /* Button Variants by Color */
+.md-button-primary {
+  background-color: var(--md-primary);
+  color: #ffffff !important; /* Texto blanco para botones primarios */
+  box-shadow: var(--md-elevation-1);
+}
+
+.md-button-primary:hover:not(:disabled) {
+  background-color: var(--md-primary-container);
+  color: #ffffff !important;
+  box-shadow: var(--md-elevation-2);
+  transform: translateY(-1px);
+}
+
 .md-button-secondary {
   background-color: var(--md-secondary);
-  color: var(--md-on-secondary);
+  color: #ffffff !important; /* Texto blanco para mejor contraste */
+}
+
+.md-button-secondary:hover:not(:disabled) {
+  color: #ffffff !important;
 }
 
 .md-button-accent {
   background-color: var(--md-accent);
-  color: var(--md-on-accent);
+  color: #ffffff !important; /* Texto blanco para mejor contraste */
+}
+
+.md-button-accent:hover:not(:disabled) {
+  color: #ffffff !important;
 }
 
 .md-button-success {
   background-color: var(--md-success);
-  color: var(--md-on-success);
+  color: #ffffff !important; /* Texto blanco para mejor contraste */
+}
+
+.md-button-success:hover:not(:disabled) {
+  color: #ffffff !important;
 }
 
 .md-button-error {
   background-color: var(--md-error);
-  color: var(--md-on-error);
+  color: #ffffff !important; /* Texto blanco para mejor contraste */
+}
+
+.md-button-error:hover:not(:disabled) {
+  color: #ffffff !important;
 }
 
 /* Disabled State */

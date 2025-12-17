@@ -42,7 +42,7 @@ class RepositorioUsuarios {
      */
     public function buscarPorCorreo(string $correo): ?array {
         try {
-            $sql = "SELECT 
+            $sql = "SELECT
                         u.id_usuario,
                         u.nombre,
                         u.apellido,
@@ -50,12 +50,13 @@ class RepositorioUsuarios {
                         u.telefono,
                         u.direccion,
                         u.contrasena_hash,
-                        u.id_rol,
                         u.fecha_registro,
                         u.estado_cuenta,
+                        ur.id_rol,
                         r.nombre_rol
                     FROM USUARIO u
-                    INNER JOIN ROL r ON u.id_rol = r.id_rol
+                    LEFT JOIN USUARIO_ROL ur ON u.id_usuario = ur.id_usuario
+                    LEFT JOIN ROL r ON ur.id_rol = r.id_rol
                     WHERE u.correo = :correo
                     LIMIT 1";
 
@@ -80,7 +81,7 @@ class RepositorioUsuarios {
      */
     public function buscarPorId(int $idUsuario): ?array {
         try {
-            $sql = "SELECT 
+            $sql = "SELECT
                         u.id_usuario,
                         u.nombre,
                         u.apellido,
@@ -88,12 +89,13 @@ class RepositorioUsuarios {
                         u.telefono,
                         u.direccion,
                         u.contrasena_hash,
-                        u.id_rol,
                         u.fecha_registro,
                         u.estado_cuenta,
+                        ur.id_rol,
                         r.nombre_rol
                     FROM USUARIO u
-                    INNER JOIN ROL r ON u.id_rol = r.id_rol
+                    LEFT JOIN USUARIO_ROL ur ON u.id_usuario = ur.id_usuario
+                    LEFT JOIN ROL r ON ur.id_rol = r.id_rol
                     WHERE u.id_usuario = :id_usuario
                     LIMIT 1";
 
@@ -120,6 +122,10 @@ class RepositorioUsuarios {
      */
     public function crear(array $datos): int {
         try {
+            // Iniciar transacción
+            $this->pdo->beginTransaction();
+            
+            // Insertar usuario
             $sql = "INSERT INTO USUARIO (
                         nombre,
                         apellido,
@@ -127,7 +133,6 @@ class RepositorioUsuarios {
                         telefono,
                         direccion,
                         contrasena_hash,
-                        id_rol,
                         fecha_registro,
                         estado_cuenta
                     ) VALUES (
@@ -137,7 +142,6 @@ class RepositorioUsuarios {
                         :telefono,
                         :direccion,
                         :contrasena_hash,
-                        :id_rol,
                         NOW(),
                         'ACTIVA'
                     )";
@@ -150,14 +154,28 @@ class RepositorioUsuarios {
                 'correo' => $datos['correo'],
                 'telefono' => $datos['telefono'] ?? null,
                 'direccion' => $datos['direccion'] ?? null,
-                'contrasena_hash' => $datos['contrasena_hash'],
-                'id_rol' => $datos['id_rol']
+                'contrasena_hash' => $datos['contrasena_hash']
             ];
 
             $stmt->execute($params);
+            $idUsuario = (int) $this->pdo->lastInsertId();
             
-            return (int) $this->pdo->lastInsertId();
+            // Asignar rol en USUARIO_ROL
+            if (isset($datos['id_rol'])) {
+                $sqlRol = "INSERT INTO USUARIO_ROL (id_usuario, id_rol, fecha_asignacion)
+                           VALUES (:id_usuario, :id_rol, NOW())";
+                $stmtRol = $this->pdo->prepare($sqlRol);
+                $stmtRol->execute([
+                    'id_usuario' => $idUsuario,
+                    'id_rol' => $datos['id_rol']
+                ]);
+            }
+            
+            $this->pdo->commit();
+            
+            return $idUsuario;
         } catch (PDOException $e) {
+            $this->pdo->rollBack();
             error_log("Error en crear usuario: " . $e->getMessage());
             throw $e;
         }

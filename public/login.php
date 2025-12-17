@@ -35,6 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtener datos del usuario
             $datosUsuario = $resultado->getData();
             
+            // DEBUG: Logging detallado para diagnóstico
+            error_log("=== DEBUG LOGIN ===");
+            error_log("Usuario ID: " . $datosUsuario['id_usuario']);
+            error_log("Nombre: " . $datosUsuario['nombre']);
+            error_log("Rol detectado: '" . $datosUsuario['rol'] . "'");
+            error_log("ID Rol: " . $datosUsuario['id_rol']);
+            error_log("Buscando 'Coordinador' en: '" . $datosUsuario['rol'] . "'");
+            error_log("Resultado strpos: " . (strpos($datosUsuario['rol'], 'Coordinador') !== false ? 'TRUE' : 'FALSE'));
+            
             // Iniciar sesión PHP y guardar datos del usuario
             $_SESSION['usuario_id'] = $datosUsuario['id_usuario'];
             $_SESSION['usuario_nombre'] = $datosUsuario['nombre'];
@@ -46,10 +55,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['fecha_login'] = date('Y-m-d H:i:s');
             
             // Redirigir según el rol del usuario
-            switch ($datosUsuario['rol']) {
-                case 'Coordinador':
-                    header('Location: dashboard-coordinador.php');
-                    exit;
+            $rol = $datosUsuario['rol'];
+            
+            // Verificar si es Coordinador (Adopciones o Rescates)
+            if (strpos($rol, 'Coordinador') !== false) {
+                header('Location: dashboard-coordinador.php');
+                exit;
+            }
+            
+            switch ($rol) {
                 case 'Veterinario':
                     header('Location: dashboard-veterinario.php');
                     exit;
@@ -58,6 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     exit;
                 case 'Adoptante':
                     header('Location: dashboard-adoptante.php');
+                    exit;
+                case 'Admin':
+                    header('Location: dashboard-coordinador.php'); // Admin usa dashboard coordinador
                     exit;
                 default:
                     header('Location: dashboard.php');

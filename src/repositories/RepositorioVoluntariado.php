@@ -185,6 +185,10 @@ class RepositorioVoluntariado {
      */
     public function listarActividades(array $filtros = [], int $limite = 50, int $offset = 0): array {
         try {
+            error_log("=== RepositorioVoluntariado::listarActividades ===");
+            error_log("Filtros: " . json_encode($filtros));
+            error_log("Límite: $limite, Offset: $offset");
+            
             $whereClauses = [];
             $params = [];
             $havingClauses = [];
@@ -222,7 +226,7 @@ class RepositorioVoluntariado {
             $whereSQL = !empty($whereClauses) ? 'WHERE ' . implode(' AND ', $whereClauses) : '';
             $havingSQL = !empty($havingClauses) ? 'HAVING ' . implode(' AND ', $havingClauses) : '';
 
-            $sql = "SELECT 
+            $sql = "SELECT
                         a.*,
                         u.nombre as nombre_coordinador,
                         u.apellido as apellido_coordinador,
@@ -230,13 +234,16 @@ class RepositorioVoluntariado {
                         COUNT(i.id_inscripcion) as inscritos
                     FROM ACTIVIDAD_VOLUNTARIADO a
                     INNER JOIN USUARIO u ON a.id_coordinador = u.id_usuario
-                    LEFT JOIN INSCRIPCION_VOLUNTARIADO i ON a.id_actividad = i.id_actividad 
+                    LEFT JOIN INSCRIPCION_VOLUNTARIADO i ON a.id_actividad = i.id_actividad
                         AND i.estado IN ('confirmada', 'asistio')
                     $whereSQL
                     GROUP BY a.id_actividad
                     $havingSQL
                     ORDER BY a.fecha_actividad ASC, a.hora_inicio ASC
                     LIMIT :limite OFFSET :offset";
+
+            error_log("SQL generado: $sql");
+            error_log("Parámetros: " . json_encode($params));
 
             $stmt = $this->pdo->prepare($sql);
             
@@ -248,9 +255,14 @@ class RepositorioVoluntariado {
             
             $stmt->execute();
             
-            return $stmt->fetchAll();
+            $resultados = $stmt->fetchAll();
+            error_log("Resultados obtenidos: " . count($resultados));
+            
+            return $resultados;
         } catch (PDOException $e) {
-            error_log("Error en listarActividades: " . $e->getMessage());
+            error_log("Error PDO en listarActividades: " . $e->getMessage());
+            error_log("Código de error: " . $e->getCode());
+            error_log("Stack trace: " . $e->getTraceAsString());
             throw $e;
         }
     }

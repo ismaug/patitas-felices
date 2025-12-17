@@ -78,10 +78,23 @@ if (isset($_GET['urgente']) && $_GET['urgente'] !== '') {
 }
 
 // Obtener actividades disponibles
+error_log("=== DEBUG: Obteniendo actividades disponibles ===");
+error_log("Filtros aplicados: " . json_encode($filtros));
+
 $resultActividades = $servicioVoluntariado->listarActividadesDisponibles($filtros);
 $actividadesDisponibles = [];
+
+error_log("Resultado isSuccess: " . ($resultActividades->isSuccess() ? 'true' : 'false'));
+error_log("Mensaje del resultado: " . $resultActividades->getMessage());
+
 if ($resultActividades->isSuccess()) {
-    $actividadesDisponibles = $resultActividades->getData()['actividades'];
+    $data = $resultActividades->getData();
+    error_log("Datos obtenidos: " . json_encode($data));
+    $actividadesDisponibles = $data['actividades'] ?? [];
+    error_log("Total de actividades disponibles: " . count($actividadesDisponibles));
+} else {
+    error_log("ERROR al obtener actividades: " . $resultActividades->getMessage());
+    error_log("Errores: " . json_encode($resultActividades->getErrors()));
 }
 
 // Obtener actividades en las que está inscrito el voluntario
@@ -1010,10 +1023,36 @@ function diasRestantes($fecha) {
             <!-- Título y botón de acción -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Actividades de Voluntariado</h1>
-                    <p class="page-subtitle">Participa en actividades y ayuda a los animales del refugio</p>
+                    <h1 class="page-title">
+                        <?php
+                        switch($vistaActual) {
+                            case 'historial':
+                                echo 'Historial de Voluntariado';
+                                break;
+                            case 'mis-actividades':
+                                echo 'Mis Actividades';
+                                break;
+                            default:
+                                echo 'Actividades de Voluntariado';
+                        }
+                        ?>
+                    </h1>
+                    <p class="page-subtitle">
+                        <?php
+                        switch($vistaActual) {
+                            case 'historial':
+                                echo 'Revisa tu historial de participación y horas acumuladas';
+                                break;
+                            case 'mis-actividades':
+                                echo 'Consulta tus actividades inscritas y próximas participaciones';
+                                break;
+                            default:
+                                echo 'Participa en actividades y ayuda a los animales del refugio';
+                        }
+                        ?>
+                    </p>
                 </div>
-                <?php if (hasRole(['Coordinador', 'Administrador'])): ?>
+                <?php if (hasRole(['Coordinador', 'Administrador']) && $vistaActual === 'todas'): ?>
                 <a href="crear_actividad.php" class="btn-primary">
                     <span class="material-symbols-outlined">add</span>
                     Crear Nueva Actividad
@@ -1032,7 +1071,7 @@ function diasRestantes($fecha) {
             <?php endif; ?>
 
             <!-- Estadísticas (solo para voluntarios) -->
-            <?php if (hasRole('Voluntario') && !empty($estadisticas)): ?>
+            <?php if (hasRole('Voluntario') && !empty($estadisticas) && in_array($vistaActual, ['todas', 'historial'])): ?>
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon primary">
@@ -1066,7 +1105,8 @@ function diasRestantes($fecha) {
             </div>
             <?php endif; ?>
 
-            <!-- Filtros -->
+            <!-- Filtros (solo en vista "todas") -->
+            <?php if ($vistaActual === 'todas'): ?>
             <div class="filters-section">
                 <div class="filters-title">
                     <span class="material-symbols-outlined">filter_list</span>
@@ -1106,9 +1146,10 @@ function diasRestantes($fecha) {
                     </div>
                 </form>
             </div>
+            <?php endif; ?>
 
             <!-- Mis Actividades (solo para voluntarios) -->
-            <?php if (hasRole('Voluntario') && !empty($misActividades)): ?>
+            <?php if (hasRole('Voluntario') && !empty($misActividades) && in_array($vistaActual, ['todas', 'mis-actividades'])): ?>
             <div class="content-section">
                 <h2 class="section-title">
                     <span class="material-symbols-outlined">event</span>
@@ -1165,7 +1206,23 @@ function diasRestantes($fecha) {
             </div>
             <?php endif; ?>
 
-            <!-- Actividades Disponibles -->
+            <!-- Mensaje si no hay actividades inscritas en vista mis-actividades -->
+            <?php if (hasRole('Voluntario') && empty($misActividades) && $vistaActual === 'mis-actividades'): ?>
+            <div class="empty-state">
+                <span class="material-symbols-outlined empty-icon">event_busy</span>
+                <h2 class="empty-title">No tienes actividades inscritas</h2>
+                <p class="empty-description">
+                    Aún no te has inscrito en ninguna actividad de voluntariado.
+                </p>
+                <a href="actividades_voluntariado.php" class="btn-primary" style="margin-top: var(--md-spacing-lg);">
+                    <span class="material-symbols-outlined">volunteer_activism</span>
+                    Ver Actividades Disponibles
+                </a>
+            </div>
+            <?php endif; ?>
+
+            <!-- Actividades Disponibles (solo en vista "todas") -->
+            <?php if ($vistaActual === 'todas'): ?>
             <div class="content-section">
                 <h2 class="section-title">
                     <span class="material-symbols-outlined">volunteer_activism</span>
@@ -1257,9 +1314,10 @@ function diasRestantes($fecha) {
                 </div>
                 <?php endif; ?>
             </div>
+            <?php endif; ?>
 
             <!-- Historial de Actividades (solo para voluntarios) -->
-            <?php if (hasRole('Voluntario') && !empty($historial)): ?>
+            <?php if (hasRole('Voluntario') && !empty($historial) && in_array($vistaActual, ['todas', 'historial'])): ?>
             <div class="content-section">
                 <h2 class="section-title">
                     <span class="material-symbols-outlined">history</span>
@@ -1294,6 +1352,22 @@ function diasRestantes($fecha) {
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- Mensaje si no hay historial en vista historial -->
+            <?php if (hasRole('Voluntario') && empty($historial) && $vistaActual === 'historial'): ?>
+            <div class="empty-state">
+                <span class="material-symbols-outlined empty-icon">history</span>
+                <h2 class="empty-title">No tienes historial de actividades</h2>
+                <p class="empty-description">
+                    Aún no has completado ninguna actividad de voluntariado.
+                    Inscríbete en actividades y participa para comenzar a acumular horas.
+                </p>
+                <a href="actividades_voluntariado.php" class="btn-primary" style="margin-top: var(--md-spacing-lg);">
+                    <span class="material-symbols-outlined">volunteer_activism</span>
+                    Ver Actividades Disponibles
+                </a>
             </div>
             <?php endif; ?>
         </main>
