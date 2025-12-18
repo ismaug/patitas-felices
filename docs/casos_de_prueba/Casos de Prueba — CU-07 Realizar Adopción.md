@@ -45,3 +45,7 @@
 | Pasos de Ejecución | 1. Iniciar proceso de adopción. 2. Completar campos requeridos. 3. Confirmar adopción. 4. Simular falla en la generación del archivo. |
 | Datos de Prueba    | N/A (fallo simulado por ambiente).                                                                                                    |
 | Resultado Esperado | El sistema muestra error, indica la causa si aplica y retorna al formulario sin completar la adopción.                                |
+<!-- 
+Comentario agregado para generar un push y ejecutar GitHub Actions.
+Evidencia de ejecución automática de pruebas del CU-07.
+-->
