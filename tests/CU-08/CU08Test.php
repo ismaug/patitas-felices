@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../src/services/ServicioAnimales.php';
 class CU08Test extends BaseTestCase {
 
     /**
-     * Test CU-08-01: Registro médico inicial exitoso
+     * Test CU-08-01: Registro médico inicial exitoso 
      */
     public function testRegistroMedicoInicial() {
         echo "\n=== CU-08-01: Registro médico inicial exitoso ===\n";

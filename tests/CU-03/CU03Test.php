@@ -4,7 +4,7 @@
  * Sistema de Gestión de Adopción de Animales - Patitas Felices
  */
    /**
-     *PRUEBA 1
+     *PRUEBA VIDEO
      */
 
 require_once __DIR__ . '/../BaseTestCase.php';
