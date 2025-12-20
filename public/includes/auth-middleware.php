@@ -302,8 +302,34 @@ function getUserEmail() {
 }
 
 /**
+ * Obtiene la URL del dashboard correspondiente al rol del usuario actual
+ *
+ * @return string URL del dashboard específico del rol
+ */
+function getDashboardUrl() {
+    if (!isAuthenticated()) {
+        return '/patitas-felices/public/login.php';
+    }
+    
+    $rol = getUserRole();
+    
+    switch ($rol) {
+        case 'Coordinador':
+            return 'dashboard-coordinador.php';
+        case 'Veterinario':
+            return 'dashboard-veterinario.php';
+        case 'Voluntario':
+            return 'dashboard-voluntario.php';
+        case 'Adoptante':
+            return 'dashboard-adoptante.php';
+        default:
+            return 'dashboard.php';
+    }
+}
+
+/**
  * Verifica si el usuario actual es coordinador
- * 
+ *
  * @return bool True si es coordinador, false en caso contrario
  */
 function isCoordinador() {

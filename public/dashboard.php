@@ -545,7 +545,7 @@ try {
     <!-- Header Universal -->
     <header class="dashboard-header">
         <div class="header-left">
-            <a href="dashboard.php" class="logo-container">
+            <a href="<?php echo getDashboardUrl(); ?>" class="logo-container">
                 <span class="material-symbols-outlined logo-icon">pets</span>
                 <span class="logo-text">Patitas Felices</span>
             </a>
@@ -581,7 +581,7 @@ try {
                 <!-- Navegación Principal -->
                 <div class="nav-section">
                     <div class="nav-section-title">Principal</div>
-                    <a href="dashboard.php" class="nav-item active">
+                    <a href="<?php echo getDashboardUrl(); ?>" class="nav-item active">
                         <span class="material-symbols-outlined">home</span>
                         <span>Inicio</span>
                     </a>

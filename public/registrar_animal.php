@@ -756,7 +756,7 @@ function fechaActual() {
     <!-- Header Universal -->
     <header class="dashboard-header">
         <div class="header-left">
-            <a href="dashboard.php" class="logo-container">
+            <a href="<?php echo getDashboardUrl(); ?>" class="logo-container">
                 <span class="material-symbols-outlined logo-icon">pets</span>
                 <span class="logo-text">Patitas Felices</span>
             </a>
@@ -792,7 +792,7 @@ function fechaActual() {
                 <!-- Navegación Principal -->
                 <div class="nav-section">
                     <div class="nav-section-title">Principal</div>
-                    <a href="dashboard.php" class="nav-item">
+                    <a href="<?php echo getDashboardUrl(); ?>" class="nav-item">
                         <span class="material-symbols-outlined">home</span>
                         <span>Inicio</span>
                     </a>
@@ -883,7 +883,16 @@ function fechaActual() {
                 <span class="material-symbols-outlined alert-icon">
                     <?php echo $tipoMensaje === 'success' ? 'check_circle' : 'error'; ?>
                 </span>
-                <span><?php echo htmlspecialchars($mensaje); ?></span>
+                <div>
+                    <div><?php echo htmlspecialchars($mensaje); ?></div>
+                    <?php if (!empty($errores)): ?>
+                    <ul style="margin-top: 8px; padding-left: 20px;">
+                        <?php foreach ($errores as $campo => $error): ?>
+                        <li><?php echo htmlspecialchars($error); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </div>
             </div>
             <?php endif; ?>
 
@@ -1099,12 +1108,12 @@ function fechaActual() {
                                     <?php foreach ($ubicaciones as $ubicacion): ?>
                                     <option value="<?php echo $ubicacion['id_ubicacion']; ?>"
                                             <?php echo ($datosFormulario['id_ubicacion'] ?? '') == $ubicacion['id_ubicacion'] ? 'selected' : ''; ?>
-                                            <?php echo $ubicacion['nombre_ubicacion'] === 'Refugio' ? 'selected' : ''; ?>>
+                                            <?php echo $ubicacion['nombre_ubicacion'] === 'Fundación' ? 'selected' : ''; ?>>
                                         <?php echo htmlspecialchars($ubicacion['nombre_ubicacion']); ?>
                                     </option>
                                     <?php endforeach; ?>
                                 </select>
-                                <span class="form-hint">Por defecto: Refugio. El estado inicial será "En Evaluación"</span>
+                                <span class="form-hint">Por defecto: Fundación. El estado inicial será "En Evaluación"</span>
                             </div>
                         </div>
                     </div>

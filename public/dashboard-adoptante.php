@@ -230,8 +230,8 @@ try {
 
         .nav-item.active {
             background-color: var(--md-primary-container);
-            color: var(--md-primary);
-            font-weight: 500;
+            color: var(--md-on-primary-container);
+            font-weight: 600;
         }
 
         .nav-item .material-symbols-outlined {

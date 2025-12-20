@@ -117,20 +117,20 @@ class ServicioAnimales {
                 );
             }
 
-            // Obtener ubicación "Refugio" (ID 1 según schema)
+            // Obtener ubicación "Fundación" (ID 1 según schema)
             $ubicaciones = $this->repositorio->obtenerUbicacionesDisponibles();
-            $ubicacionRefugio = null;
+            $ubicacionFundacion = null;
             foreach ($ubicaciones as $ubicacion) {
-                if ($ubicacion['nombre_ubicacion'] === 'Refugio') {
-                    $ubicacionRefugio = $ubicacion['id_ubicacion'];
+                if ($ubicacion['nombre_ubicacion'] === 'Fundación') {
+                    $ubicacionFundacion = $ubicacion['id_ubicacion'];
                     break;
                 }
             }
 
-            if ($ubicacionRefugio === null) {
+            if ($ubicacionFundacion === null) {
                 return ServiceResult::error(
                     'No se pudo determinar la ubicación inicial del animal',
-                    ['ubicacion' => 'Ubicación "Refugio" no encontrada']
+                    ['ubicacion' => 'Ubicación "Fundación" no encontrada']
                 );
             }
 
@@ -152,7 +152,7 @@ class ServicioAnimales {
                 'compatibilidad' => $input['compatibilidad'] ?? null,
                 'requisitos_adopcion' => $input['requisitos_adopcion'] ?? null,
                 'id_estado_actual' => $estadoEvaluacion,
-                'id_ubicacion_actual' => $ubicacionRefugio,
+                'id_ubicacion_actual' => $ubicacionFundacion,
                 'fecha_ingreso' => date('Y-m-d H:i:s')
             ];
 
@@ -171,7 +171,7 @@ class ServicioAnimales {
             $datosSeguimiento = [
                 'id_animal' => $idAnimal,
                 'id_estado' => $estadoEvaluacion,
-                'id_ubicacion' => $ubicacionRefugio,
+                'id_ubicacion' => $ubicacionFundacion,
                 'id_usuario' => $idUsuario ?? 1, // Usuario por defecto si no se proporciona
                 'fecha_hora' => date('Y-m-d H:i:s'),
                 'comentarios' => 'Animal registrado en el sistema. Estado inicial: En Evaluación.'

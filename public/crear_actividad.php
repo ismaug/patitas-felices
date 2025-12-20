@@ -90,11 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores['titulo'] = 'El título de la actividad es obligatorio';
     }
     
-    if (empty($datosFormulario['tipo_actividad'])) {
-        $errores['tipo_actividad'] = 'Debe seleccionar el tipo de actividad';
-    } elseif (!in_array($datosFormulario['tipo_actividad'], ['Cuidado de animales', 'Limpieza', 'Evento de adopción', 'Capacitación', 'Otro'])) {
-        $errores['tipo_actividad'] = 'Tipo de actividad no válido';
-    }
+    // tipo_actividad es opcional - no está en el schema de la BD
     
     if (empty($datosFormulario['descripcion'])) {
         $errores['descripcion'] = 'La descripción es obligatoria';
@@ -838,7 +834,7 @@ function calcularDuracion($horaInicio, $horaFin) {
     <!-- Header Universal -->
     <header class="dashboard-header">
         <div class="header-left">
-            <a href="dashboard.php" class="logo-container">
+            <a href="<?php echo getDashboardUrl(); ?>" class="logo-container">
                 <span class="material-symbols-outlined logo-icon">pets</span>
                 <span class="logo-text">Patitas Felices</span>
             </a>
@@ -874,7 +870,7 @@ function calcularDuracion($horaInicio, $horaFin) {
                 <!-- Navegación Principal -->
                 <div class="nav-section">
                     <div class="nav-section-title">Principal</div>
-                    <a href="dashboard.php" class="nav-item">
+                    <a href="<?php echo getDashboardUrl(); ?>" class="nav-item">
                         <span class="material-symbols-outlined">home</span>
                         <span>Inicio</span>
                     </a>
@@ -995,26 +991,6 @@ function calcularDuracion($horaInicio, $horaFin) {
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="tipo_actividad" class="form-label">
-                                    Tipo de Actividad <span class="required">*</span>
-                                </label>
-                                <select id="tipo_actividad" name="tipo_actividad" class="form-select <?php echo isset($errores['tipo_actividad']) ? 'error' : ''; ?>" required>
-                                    <option value="">Seleccione un tipo</option>
-                                    <option value="Cuidado de animales" <?php echo ($datosFormulario['tipo_actividad'] ?? '') === 'Cuidado de animales' ? 'selected' : ''; ?>>Cuidado de animales</option>
-                                    <option value="Limpieza" <?php echo ($datosFormulario['tipo_actividad'] ?? '') === 'Limpieza' ? 'selected' : ''; ?>>Limpieza</option>
-                                    <option value="Evento de adopción" <?php echo ($datosFormulario['tipo_actividad'] ?? '') === 'Evento de adopción' ? 'selected' : ''; ?>>Evento de adopción</option>
-                                    <option value="Capacitación" <?php echo ($datosFormulario['tipo_actividad'] ?? '') === 'Capacitación' ? 'selected' : ''; ?>>Capacitación</option>
-                                    <option value="Otro" <?php echo ($datosFormulario['tipo_actividad'] ?? '') === 'Otro' ? 'selected' : ''; ?>>Otro</option>
-                                </select>
-                                <?php if (isset($errores['tipo_actividad'])): ?>
-                                <span class="form-error">
-                                    <span class="material-symbols-outlined" style="font-size: 1rem;">error</span>
-                                    <?php echo htmlspecialchars($errores['tipo_actividad']); ?>
-                                </span>
-                                <?php endif; ?>
-                            </div>
-
                             <div class="form-group">
                                 <label for="voluntarios_requeridos" class="form-label">
                                     Cupos Totales <span class="required">*</span>
@@ -1311,7 +1287,6 @@ function calcularDuracion($horaInicio, $horaFin) {
             // Validar campos requeridos
             const camposRequeridos = [
                 { id: 'titulo', nombre: 'Título de la actividad' },
-                { id: 'tipo_actividad', nombre: 'Tipo de actividad' },
                 { id: 'descripcion', nombre: 'Descripción' },
                 { id: 'fecha_actividad', nombre: 'Fecha de la actividad' },
                 { id: 'hora_inicio', nombre: 'Hora de inicio' },
