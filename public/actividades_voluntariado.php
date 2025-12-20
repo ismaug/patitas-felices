@@ -1168,7 +1168,7 @@ function diasRestantes($fecha) {
                         <div class="activity-header">
                             <div class="activity-title">
                                 <?php echo htmlspecialchars($actividad['titulo']); ?>
-                                <?php if ($actividad['es_urgente']): ?>
+                                <?php if (isset($actividad['es_urgente']) && $actividad['es_urgente']): ?>
                                 <span class="badge-urgent">URGENTE</span>
                                 <?php endif; ?>
                             </div>
@@ -1253,7 +1253,7 @@ function diasRestantes($fecha) {
                         <div class="activity-header">
                             <div class="activity-title">
                                 <?php echo htmlspecialchars($actividad['titulo']); ?>
-                                <?php if ($actividad['es_urgente']): ?>
+                                <?php if (isset($actividad['es_urgente']) && $actividad['es_urgente']): ?>
                                 <span class="badge-urgent">URGENTE</span>
                                 <?php endif; ?>
                             </div>
