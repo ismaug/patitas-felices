@@ -432,85 +432,130 @@ INSERT INTO ADOPCION (
 -- 10 actividades futuras + 5 actividades pasadas
 
 INSERT INTO ACTIVIDAD_VOLUNTARIADO (
-    id_actividad, titulo, descripcion, fecha, hora_inicio, hora_fin,
-    lugar, cupo_maximo, cupo_actual, estado_actividad
+    id_actividad, titulo, descripcion, fecha_actividad, hora_inicio, hora_fin,
+    lugar, voluntarios_requeridos, requisitos, beneficios, es_urgente, id_coordinador
 ) VALUES
 -- ===== ACTIVIDADES PASADAS (COMPLETADAS) =====
 (1, 'Jornada de Limpieza General',
  'Limpieza profunda de las instalaciones de la fundación.',
  DATE_SUB(CURDATE(), INTERVAL 45 DAY), '08:00:00', '12:00:00',
- 'Fundación Patitas Felices', 15, 15, 'Completada'),
+ 'Fundación Patitas Felices', 15,
+ 'Ninguno. Solo ganas de ayudar.',
+ 'Certificado de participación, refrigerio.',
+ 0, 1),
 
 (2, 'Campaña de Adopción en Centro Comercial',
  'Promoción de adopciones en centro comercial. Llevar animales disponibles.',
  DATE_SUB(CURDATE(), INTERVAL 30 DAY), '10:00:00', '16:00:00',
- 'Albrook Mall', 20, 20, 'Completada'),
+ 'Albrook Mall', 20,
+ 'Buena comunicación con el público.',
+ 'Certificado de participación, almuerzo.',
+ 0, 2),
 
 (3, 'Taller de Primeros Auxilios para Mascotas',
  'Capacitación en primeros auxilios básicos para perros y gatos.',
  DATE_SUB(CURDATE(), INTERVAL 20 DAY), '14:00:00', '17:00:00',
- 'Sala de Conferencias - Fundación', 25, 25, 'Completada'),
+ 'Sala de Conferencias - Fundación', 25,
+ 'Ninguno. Abierto a todos.',
+ 'Certificado de capacitación, material educativo.',
+ 0, 1),
 
 (4, 'Paseo Grupal de Perros',
  'Paseo recreativo con los perros de la fundación en el parque.',
  DATE_SUB(CURDATE(), INTERVAL 15 DAY), '07:00:00', '09:00:00',
- 'Parque Omar', 12, 12, 'Completada'),
+ 'Parque Omar', 12,
+ 'Experiencia básica con perros.',
+ 'Certificado de participación.',
+ 0, 2),
 
 (5, 'Recolección de Donaciones en Supermercados',
  'Campaña de recolección de alimento y suministros.',
  DATE_SUB(CURDATE(), INTERVAL 10 DAY), '09:00:00', '15:00:00',
- 'Supermercado Rey - Vía España', 18, 18, 'Completada'),
+ 'Supermercado Rey - Vía España', 18,
+ 'Buena actitud y comunicación.',
+ 'Certificado de participación, refrigerio.',
+ 0, 1),
 
 -- ===== ACTIVIDADES FUTURAS =====
 (6, 'Jornada de Vacunación Gratuita',
  'Apoyo en jornada de vacunación para mascotas de la comunidad.',
  DATE_ADD(CURDATE(), INTERVAL 5 DAY), '08:00:00', '14:00:00',
- 'Fundación Patitas Felices', 20, 3, 'Programada'),
+ 'Fundación Patitas Felices', 20,
+ 'Ninguno. Capacitación previa incluida.',
+ 'Certificado de participación, almuerzo, experiencia práctica.',
+ 1, 2),
 
 (7, 'Construcción de Casetas para Perros',
  'Construcción de nuevas casetas para el área de perros.',
  DATE_ADD(CURDATE(), INTERVAL 8 DAY), '08:00:00', '13:00:00',
- 'Fundación Patitas Felices', 10, 1, 'Programada'),
+ 'Fundación Patitas Felices', 10,
+ 'Habilidades básicas de construcción (opcional).',
+ 'Certificado de participación, refrigerio.',
+ 0, 1),
 
 (8, 'Sesión de Fotos Profesionales',
  'Sesión fotográfica de animales disponibles para redes sociales.',
  DATE_ADD(CURDATE(), INTERVAL 12 DAY), '10:00:00', '15:00:00',
- 'Fundación Patitas Felices', 8, 1, 'Programada'),
+ 'Fundación Patitas Felices', 8,
+ 'Ninguno. Fotógrafo profesional dirigirá la sesión.',
+ 'Certificado de participación, fotos digitales.',
+ 0, 2),
 
 (9, 'Taller de Educación sobre Tenencia Responsable',
  'Charla educativa en escuela sobre cuidado responsable de mascotas.',
  DATE_ADD(CURDATE(), INTERVAL 15 DAY), '14:00:00', '16:00:00',
- 'Escuela Primaria José de la Cruz Herrera', 15, 2, 'Programada'),
+ 'Escuela Primaria José de la Cruz Herrera', 15,
+ 'Buena comunicación con niños.',
+ 'Certificado de participación, material educativo.',
+ 0, 1),
 
 (10, 'Paseo Nocturno con Perros',
  'Paseo especial nocturno para perros con alta energía.',
  DATE_ADD(CURDATE(), INTERVAL 18 DAY), '18:00:00', '20:00:00',
- 'Cinta Costera', 10, 0, 'Programada'),
+ 'Cinta Costera', 2,
+ 'Experiencia con perros de alta energía.',
+ 'Certificado de participación.',
+ 0, 2),
 
 (11, 'Feria de Adopción en Parque',
  'Gran feria de adopción con juegos y actividades.',
  DATE_ADD(CURDATE(), INTERVAL 22 DAY), '09:00:00', '17:00:00',
- 'Parque Recreativo Omar', 30, 3, 'Programada'),
+ 'Parque Recreativo Omar', 30,
+ 'Ninguno. Actividad familiar.',
+ 'Certificado de participación, almuerzo, camiseta del evento.',
+ 1, 1),
 
 (12, 'Mantenimiento de Jardines',
  'Mantenimiento y embellecimiento de áreas verdes de la fundación.',
  DATE_ADD(CURDATE(), INTERVAL 25 DAY), '07:00:00', '11:00:00',
- 'Fundación Patitas Felices', 12, 0, 'Programada'),
+ 'Fundación Patitas Felices', 12,
+ 'Ninguno. Herramientas proporcionadas.',
+ 'Certificado de participación, refrigerio.',
+ 0, 2),
 
 (13, 'Campaña de Esterilización Comunitaria',
  'Apoyo en campaña de esterilización gratuita.',
  DATE_ADD(CURDATE(), INTERVAL 30 DAY), '07:00:00', '15:00:00',
- 'Centro Comunitario de San Miguelito', 25, 0, 'Programada'),
+ 'Centro Comunitario de San Miguelito', 25,
+ 'Capacitación previa incluida.',
+ 'Certificado de participación, almuerzo, experiencia veterinaria.',
+ 1, 1),
 
 (14, 'Taller de Elaboración de Juguetes para Gatos',
  'Taller creativo para hacer juguetes caseros para gatos.',
  DATE_ADD(CURDATE(), INTERVAL 35 DAY), '15:00:00', '18:00:00',
- 'Fundación Patitas Felices', 20, 0, 'Programada'),
+ 'Fundación Patitas Felices', 20,
+ 'Creatividad y ganas de aprender.',
+ 'Certificado de participación, juguetes para llevar a casa.',
+ 0, 2),
 
 (15, 'Visita a Refugios Asociados',
  'Visita educativa a refugios asociados para intercambio de experiencias.',
  DATE_ADD(CURDATE(), INTERVAL 40 DAY), '09:00:00', '14:00:00',
- 'Varios refugios en Panamá Oeste', 15, 0, 'Programada');
+ 'Varios refugios en Panamá Oeste', 15,
+ 'Ninguno. Transporte proporcionado.',
+ 'Certificado de participación, almuerzo, networking.',
+ 0, 1);
 
 -- ============================================================================
 -- 13. INSCRIPCIONES A ACTIVIDADES DE VOLUNTARIADO
@@ -519,57 +564,60 @@ INSERT INTO ACTIVIDAD_VOLUNTARIADO (
 
 INSERT INTO INSCRIPCION_VOLUNTARIADO (
     id_inscripcion, id_actividad, id_voluntario, fecha_inscripcion,
-    horas_realizadas, estado_inscripcion
+    horas_realizadas, estado
 ) VALUES
 -- ===== INSCRIPCIONES DE MARIO (Voluntario destacado) =====
 -- Actividades pasadas completadas
-(1, 1, 5, DATE_SUB(CURDATE(), INTERVAL 50 DAY), 4.0, 'Completado'),
-(2, 3, 5, DATE_SUB(CURDATE(), INTERVAL 30 DAY), 3.0, 'Completado'),
-(3, 5, 5, DATE_SUB(CURDATE(), INTERVAL 15 DAY), 6.0, 'Completado'),
+(1, 1, 5, DATE_SUB(CURDATE(), INTERVAL 50 DAY), 4.0, 'completada'),
+(2, 3, 5, DATE_SUB(CURDATE(), INTERVAL 30 DAY), 3.0, 'completada'),
+(3, 5, 5, DATE_SUB(CURDATE(), INTERVAL 15 DAY), 6.0, 'completada'),
 
 -- Actividad futura inscrita (pendiente)
-(4, 6, 5, CURDATE(), NULL, 'Inscrito'),
+(4, 6, 5, CURDATE(), NULL, 'confirmada'),
 
 -- ===== OTRAS INSCRIPCIONES EN ACTIVIDADES PASADAS =====
 -- Actividad 1 (Limpieza)
-(5, 1, 6, DATE_SUB(CURDATE(), INTERVAL 50 DAY), 4.0, 'Completado'),
-(6, 1, 7, DATE_SUB(CURDATE(), INTERVAL 50 DAY), 3.5, 'Completado'),
+(5, 1, 6, DATE_SUB(CURDATE(), INTERVAL 50 DAY), 4.0, 'completada'),
+(6, 1, 7, DATE_SUB(CURDATE(), INTERVAL 50 DAY), 3.5, 'completada'),
 
 -- Actividad 2 (Campaña en Mall)
-(7, 2, 6, DATE_SUB(CURDATE(), INTERVAL 35 DAY), 6.0, 'Completado'),
-(8, 2, 7, DATE_SUB(CURDATE(), INTERVAL 35 DAY), 6.0, 'Completado'),
-(9, 2, 9, DATE_SUB(CURDATE(), INTERVAL 35 DAY), 5.5, 'Completado'),
+(7, 2, 6, DATE_SUB(CURDATE(), INTERVAL 35 DAY), 6.0, 'completada'),
+(8, 2, 7, DATE_SUB(CURDATE(), INTERVAL 35 DAY), 6.0, 'completada'),
+(9, 2, 9, DATE_SUB(CURDATE(), INTERVAL 35 DAY), 5.5, 'completada'),
 
 -- Actividad 3 (Taller Primeros Auxilios)
-(10, 3, 6, DATE_SUB(CURDATE(), INTERVAL 30 DAY), 3.0, 'Completado'),
+(10, 3, 6, DATE_SUB(CURDATE(), INTERVAL 30 DAY), 3.0, 'completada'),
 
 -- Actividad 4 (Paseo de Perros)
-(11, 4, 7, DATE_SUB(CURDATE(), INTERVAL 20 DAY), 2.0, 'Completado'),
-(12, 4, 6, DATE_SUB(CURDATE(), INTERVAL 20 DAY), 2.0, 'Completado'),
+(11, 4, 7, DATE_SUB(CURDATE(), INTERVAL 20 DAY), 2.0, 'completada'),
+(12, 4, 6, DATE_SUB(CURDATE(), INTERVAL 20 DAY), 2.0, 'completada'),
 
 -- Actividad 5 (Recolección Donaciones)
-(13, 5, 6, DATE_SUB(CURDATE(), INTERVAL 15 DAY), 6.0, 'Completado'),
-(14, 5, 7, DATE_SUB(CURDATE(), INTERVAL 15 DAY), 5.5, 'Completado'),
+(13, 5, 6, DATE_SUB(CURDATE(), INTERVAL 15 DAY), 6.0, 'completada'),
+(14, 5, 7, DATE_SUB(CURDATE(), INTERVAL 15 DAY), 5.5, 'completada'),
 
 -- ===== INSCRIPCIONES EN ACTIVIDADES FUTURAS =====
 -- Actividad 6 (Vacunación)
-(15, 6, 6, CURDATE(), NULL, 'Inscrito'),
-(16, 6, 7, CURDATE(), NULL, 'Inscrito'),
+(15, 6, 6, CURDATE(), NULL, 'confirmada'),
+(16, 6, 7, CURDATE(), NULL, 'confirmada'),
 
 -- Actividad 7 (Construcción Casetas)
-(17, 7, 7, CURDATE(), NULL, 'Inscrito'),
+(17, 7, 7, CURDATE(), NULL, 'confirmada'),
 
 -- Actividad 8 (Sesión Fotos)
-(18, 8, 6, CURDATE(), NULL, 'Inscrito'),
+(18, 8, 6, CURDATE(), NULL, 'confirmada'),
 
 -- Actividad 9 (Taller Educación)
-(19, 9, 5, CURDATE(), NULL, 'Inscrito'),
-(20, 9, 6, CURDATE(), NULL, 'Inscrito'),
+(19, 9, 6, CURDATE(), NULL, 'confirmada'),
+
+-- Actividad 10 (Paseo Nocturno) - LLENA, Mario NO inscrito
+(20, 10, 6, CURDATE(), NULL, 'confirmada'),
+(21, 10, 7, CURDATE(), NULL, 'confirmada'),
 
 -- Actividad 11 (Feria Adopción)
-(21, 11, 5, CURDATE(), NULL, 'Inscrito'),
-(22, 11, 6, CURDATE(), NULL, 'Inscrito'),
-(23, 11, 7, CURDATE(), NULL, 'Inscrito');
+(22, 11, 5, CURDATE(), NULL, 'confirmada'),
+(23, 11, 6, CURDATE(), NULL, 'confirmada'),
+(24, 11, 7, CURDATE(), NULL, 'confirmada');
 
 -- ============================================================================
 -- FIN DEL SEED

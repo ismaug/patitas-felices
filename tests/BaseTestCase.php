@@ -246,8 +246,7 @@ abstract class BaseTestCase extends TestCase {
             'requisitos' => null,
             'beneficios' => null,
             'es_urgente' => 0,
-            'id_coordinador' => 2, // Carlos Coord
-            'fecha_creacion' => '2025-01-01 10:00:00'
+            'id_coordinador' => 2 // Carlos Coord
         ];
 
         $datos = array_merge($datosDefault, $datosPersonalizados);
@@ -255,11 +254,11 @@ abstract class BaseTestCase extends TestCase {
         $sql = "INSERT INTO ACTIVIDAD_VOLUNTARIADO (
             titulo, descripcion, fecha_actividad, hora_inicio, hora_fin,
             lugar, voluntarios_requeridos, requisitos, beneficios, es_urgente,
-            id_coordinador, fecha_creacion
+            id_coordinador
         ) VALUES (
             :titulo, :descripcion, :fecha_actividad, :hora_inicio, :hora_fin,
             :lugar, :voluntarios_requeridos, :requisitos, :beneficios, :es_urgente,
-            :id_coordinador, :fecha_creacion
+            :id_coordinador
         )";
 
         $stmt = $this->pdo->prepare($sql);
