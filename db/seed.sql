@@ -172,31 +172,31 @@ INSERT INTO ANIMAL (
  2, 1, '2024-11-20'),
 
 (3, 'Max', 'Perro', 'Labrador Retriever', 'Macho', 'Grande', 'Dorado',
- 2, NULL, '2024-12-10', 'Parque Omar',
+ 2, NULL, '2024-11-10', 'Parque Omar',
  'Joven, sano y muy activo',
  'Rescatado del parque. Muy amigable desde el primer momento.',
  'Extremadamente amigable, juguetón y energético. Ama el agua.',
  'Perfecto para familias con niños. Se lleva bien con todos.',
  'Familia activa, ejercicio diario, espacio para jugar.',
- 2, 1, '2024-12-15'),
+ 4, 1, '2024-11-15'),
 
 (4, 'Rocky', 'Perro', 'Bulldog Francés', 'Macho', 'Pequeño', 'Atigrado',
- 5, NULL, '2024-10-20', 'Refugio temporal',
+ 5, NULL, '2024-08-20', 'Refugio temporal',
  'Buena condición, necesita dieta especial',
  'Transferido de otro refugio. Dueño anterior no pudo seguir cuidándolo.',
  'Tranquilo, cariñoso y un poco perezoso. Perfecto compañero de sofá.',
  'Ideal para apartamentos. Bueno con niños y otros animales.',
  'Ambiente interior, alimentación especial por edad, aire acondicionado.',
- 2, 1, '2024-10-25'),
+ 4, 1, '2024-08-25'),
 
 (5, 'Daisy', 'Perro', 'Beagle', 'Hembra', 'Mediano', 'Tricolor',
- 3, NULL, '2024-11-25', 'Bosque cercano a Gamboa',
+ 3, NULL, '2024-10-05', 'Bosque cercano a Gamboa',
  'En recuperación, mejorando cada día',
  'Rescatada del bosque. Estaba asustada pero ahora confía en las personas.',
  'Curiosa, cazadora nata, muy olfateadora. Le encanta explorar.',
  'Necesita familia activa que entienda su instinto de caza.',
  'Correa siempre puesta en exteriores, entrenamiento, jardín cercado.',
- 2, 1, '2024-11-30'),
+ 4, 1, '2024-10-10'),
 
 -- GATOS DISPONIBLES
 (6, 'Misha', 'Gato', 'Siamés', 'Hembra', 'Pequeño', 'Crema con puntos oscuros',
@@ -206,7 +206,7 @@ INSERT INTO ANIMAL (
  'Tranquila, curiosa y vocal. Le gusta conversar con maullidos.',
  'Mejor en hogar tranquilo. Puede convivir con otros gatos.',
  'Ambiente interior, revisión veterinaria periódica, juguetes interactivos.',
- 2, 1, '2024-11-05'),
+ 4, 1, '2024-11-05'),
 
 (7, 'Luna', 'Gato', 'Persa', 'Hembra', 'Pequeño', 'Blanco puro',
  1, NULL, '2024-12-05', 'Veterinaria',
@@ -224,7 +224,7 @@ INSERT INTO ANIMAL (
  'Curioso, activo y muy juguetón. Le encanta trepar.',
  'Hogar con espacio para jugar. Bueno con niños.',
  'Esterilización programada, ambiente seguro, juguetes.',
- 2, 1, '2024-12-18'),
+ 4, 1, '2024-12-18'),
 
 (9, 'Simba', 'Gato', 'Maine Coon', 'Macho', 'Grande', 'Naranja y blanco',
  3, NULL, '2024-10-15', 'Granja abandonada en Capira',
@@ -233,7 +233,7 @@ INSERT INTO ANIMAL (
  'Independiente, tranquilo y observador. Le gusta tener su espacio.',
  'Hogar espacioso. Puede vivir con otros gatos.',
  'Cepillado frecuente, espacio vertical, alimentación de calidad.',
- 2, 1, '2024-10-20'),
+ 4, 1, '2024-10-20'),
 
 (10, 'Bella', 'Gato', 'Mestizo', 'Hembra', 'Pequeño', 'Carey (tricolor)',
  2, NULL, '2024-11-20', 'Casa abandonada',
@@ -335,7 +335,7 @@ INSERT INTO SEGUIMIENTO_ANIMAL (
 (8, 6, 2, 1, 1, '2024-11-08 10:00:00', 'Disponible para adopción.');
 
 -- ============================================================================
--- 10. SOLICITUDES DE ADOPCIÓN
+-- 10. SOLICITUDES DE ADOPCIÓN (2025 - Actualizadas)
 -- ============================================================================
 INSERT INTO SOLICITUD_ADOPCION (
     id_solicitud, id_animal, id_adoptante, fecha_solicitud,
@@ -345,31 +345,32 @@ INSERT INTO SOLICITUD_ADOPCION (
     notas_adicionales, comentarios_aprobacion, motivo_rechazo,
     notas_internas, fecha_revision, id_coordinador_revisor
 ) VALUES
--- Solicitud PENDIENTE para Firulais (Ana)
-(1, 1, 8, '2024-12-15 14:30:00',
- 'Pendiente',
+-- Solicitud 1: APROBADA - Firulais (Ana) - Adopción 21/11/2025
+(1, 1, 8, '2025-11-18 14:30:00',
+ 'Aprobada',
  'Quiero darle un hogar responsable. Tengo tiempo y espacio para dedicarle.',
  'Casa', 3,
  1, 'Tuve un perro mestizo durante 10 años hasta que falleció el año pasado.',
  1, 1, 'Un gato casero esterilizado de 5 años.',
  'Referencia: María López, 6000-0101, vecina.',
  'Trabajo desde casa, así que puedo estar con él todo el día.',
- NULL, NULL, NULL, NULL, NULL),
+ 'Excelente candidata. Casa adecuada y experiencia previa.',
+ NULL, NULL, '2025-11-19 10:00:00', 1),
 
--- Solicitud EN REVISIÓN para Rex (Pedro)
-(2, 2, 9, '2024-12-18 11:00:00',
- 'En Revisión',
+-- Solicitud 2: APROBADA - Rex (Pedro) - Adopción 25/11/2025
+(2, 2, 9, '2025-11-20 11:00:00',
+ 'Aprobada',
  'Busco un perro grande para compañía y seguridad. Tengo experiencia con pastores.',
  'Casa con jardín', 4,
  1, 'He tenido dos pastores alemanes antes. Conozco sus necesidades.',
  1, 2, 'Dos perros mestizos y un gato.',
  'Referencia: Ana López, 6000-0110, veterinaria.',
  'Jardín amplio y cercado. Familia activa.',
- NULL, NULL,
- 'Verificando referencias. Parece buen candidato.', '2024-12-19 10:00:00', 1),
+ 'Familia ideal para Rex. Experiencia previa con pastores. Aprobada.',
+ NULL, NULL, '2025-11-21 10:00:00', 1),
 
--- Solicitud APROBADA para Max (Sofia)
-(3, 3, 10, '2024-12-16 13:00:00',
+-- Solicitud 3: APROBADA - Max (Sofia) - Adopción 28/11/2025
+(3, 3, 10, '2025-11-22 13:00:00',
  'Aprobada',
  'Familia con dos niños busca perro amigable y juguetón.',
  'Casa', 4,
@@ -378,11 +379,10 @@ INSERT INTO SOLICITUD_ADOPCION (
  'Referencia: María Ruiz, 6000-0112, amiga de la familia.',
  'Los niños están muy emocionados. Casa con patio grande.',
  'Familia ideal para Max. Experiencia previa con labradores. Aprobada.',
- NULL,
- 'Programar entrega para próxima semana.', '2024-12-17 14:00:00', 1),
+ NULL, NULL, '2025-11-23 14:00:00', 1),
 
--- Solicitud RECHAZADA para Rocky (Ana - segunda solicitud)
-(4, 4, 8, '2024-12-10 15:00:00',
+-- Solicitud 4: RECHAZADA - Rocky (Ana - segunda solicitud)
+(4, 4, 8, '2025-11-10 15:00:00',
  'Rechazada',
  'Me encantan los bulldogs. Quiero adoptar a Rocky.',
  'Apartamento pequeño', 1,
@@ -392,11 +392,11 @@ INSERT INTO SOLICITUD_ADOPCION (
  'Vivo sola pero trabajo desde casa.',
  NULL,
  'Apartamento no tiene aire acondicionado. Rocky necesita ambiente fresco por su raza.',
- 'Sugerir otros animales más adecuados para su vivienda.', '2024-12-12 16:00:00', 1),
+ 'Sugerir otros animales más adecuados para su vivienda.', '2025-11-12 16:00:00', 1),
 
--- Solicitud COMPLETADA - Adopción realizada (Misha - Pedro)
-(5, 6, 9, '2024-11-10 10:00:00',
- 'Completada',
+-- Solicitud 5: APROBADA - Misha (Pedro) - Adopción 02/12/2025
+(5, 6, 9, '2025-11-28 10:00:00',
+ 'Aprobada',
  'Busco compañía. Me encantan los gatos siameses.',
  'Apartamento', 2,
  1, 'He tenido tres gatos siameses a lo largo de mi vida.',
@@ -404,27 +404,111 @@ INSERT INTO SOLICITUD_ADOPCION (
  'Referencia: Juan Pérez, 6000-0102, veterinario.',
  'Apartamento amplio y tranquilo. Sin niños.',
  'Excelente candidato. Experiencia con la raza. Aprobado.',
- NULL,
- 'Adopción exitosa.', '2024-11-12 16:00:00', 1),
+ NULL, NULL, '2025-11-29 16:00:00', 1),
 
--- Solicitud PENDIENTE para Luna (Sofia - segunda solicitud)
-(6, 7, 10, '2024-12-19 17:00:00',
- 'Pendiente',
+-- Solicitud 6: PENDIENTE - Luna (Sofia - segunda solicitud)
+(6, 7, 10, '2025-12-19 17:00:00',
+ 'Pendiente de revisión',
  'Además de Max, nos gustaría adoptar a Luna para mi hija.',
  'Casa', 4,
  1, 'Experiencia con perros y gatos.',
- 1, 0, 'Pronto tendremos a Max.',
+ 1, 1, 'Tenemos a Max desde hace 3 semanas.',
  'Referencia: María Ruiz, 6000-0112.',
  'Mi hija de 8 años quiere una gata.',
- NULL, NULL, NULL, NULL, NULL);
+ NULL, NULL, NULL, NULL, NULL),
+
+-- Solicitud 7: APROBADA - Daisy (Ana) - Adopción 05/12/2025
+(7, 5, 8, '2025-12-01 10:00:00',
+ 'Aprobada',
+ 'Busco un perro activo para acompañarme en mis caminatas.',
+ 'Casa', 3,
+ 1, 'Tuve un perro mestizo durante 10 años.',
+ 1, 1, 'Un gato casero esterilizado.',
+ 'Referencia: María López, 6000-0101, vecina.',
+ 'Tengo un jardín grande y cercado.',
+ 'Excelente candidata. Casa adecuada para Daisy.',
+ NULL, NULL, '2025-12-02 15:00:00', 1),
+
+-- Solicitud 8: APROBADA - Rocky (Pedro) - Adopción 08/12/2025
+(8, 4, 9, '2025-12-03 14:00:00',
+ 'Aprobada',
+ 'Busco un perro tranquilo para mi apartamento.',
+ 'Apartamento', 2,
+ 1, 'He tenido bulldogs antes.',
+ 1, 0, NULL,
+ 'Referencia: Ana López, 6000-0110, veterinaria.',
+ 'Apartamento con aire acondicionado.',
+ 'Perfecto para Rocky. Experiencia con la raza.',
+ NULL, NULL, '2025-12-04 16:00:00', 2),
+
+-- Solicitud 9: APROBADA - Coco (Ana - tercera solicitud) - Adopción 12/12/2025
+(9, 8, 8, '2025-12-10 11:00:00',
+ 'Aprobada',
+ 'Mi gato necesita un compañero juguetón.',
+ 'Casa', 3,
+ 1, 'Tengo experiencia con gatos.',
+ 1, 2, 'Un gato adulto y Daisy.',
+ 'Referencia: María López, 6000-0101.',
+ 'Busco un gato joven para mi gato actual.',
+ 'Buena opción. Coco es sociable.',
+ NULL, NULL, '2025-12-11 10:00:00', 1),
+
+-- Solicitud 10: APROBADA - Simba (Pedro - segunda solicitud) - Adopción 15/12/2025
+(10, 9, 9, '2025-12-08 09:00:00',
+ 'Aprobada',
+ 'Busco un gato grande e independiente.',
+ 'Casa con jardín', 4,
+ 1, 'He tenido gatos Maine Coon.',
+ 1, 3, 'Dos perros, un gato y Rocky.',
+ 'Referencia: Juan Pérez, 6000-0102.',
+ 'Casa espaciosa con áreas para gatos.',
+ 'Excelente hogar para Simba.',
+ NULL, NULL, '2025-12-09 14:00:00', 2),
+
+-- Solicitud 11: APROBADA - Bella (Sofia - tercera solicitud) - Adopción 18/12/2025
+(11, 10, 10, '2025-12-14 15:00:00',
+ 'Aprobada',
+ 'Busco una gata tranquila para mi hija.',
+ 'Casa', 4,
+ 1, 'Experiencia con gatos.',
+ 1, 1, 'Tenemos a Max.',
+ 'Referencia: María Ruiz, 6000-0112.',
+ 'Mi hija quiere cuidar una gata.',
+ 'Familia responsable. Aprobada.',
+ NULL, NULL, '2025-12-15 16:00:00', 1);
 
 -- ============================================================================
--- 11. ADOPCIONES COMPLETADAS
+-- 11. ADOPCIONES COMPLETADAS (2025 - 10 adopciones entre 21/11 y 18/12)
 -- ============================================================================
 INSERT INTO ADOPCION (
     id_adopcion, id_solicitud, fecha_adopcion, observaciones, lugar_entrega
 ) VALUES
-(1, 5, '2024-11-15', 'Entrega realizada en la fundación. Misha se adaptó muy bien. Seguimiento programado para febrero.', 'Fundación');
+-- 1. Firulais adoptado por Ana (3 días: 18-nov a 21-nov)
+(1, 1, '2025-11-21', 'Primera adopción del mes. Firulais se adaptó muy bien. Ana muy comprometida.', 'Fundación'),
+
+-- 2. Rex adoptado por Pedro (5 días: 20-nov a 25-nov)
+(2, 2, '2025-11-25', 'Familia ideal para Rex. Jardín amplio. Seguimiento programado para enero.', 'Fundación'),
+
+-- 3. Max adoptado por Sofia (6 días: 22-nov a 28-nov)
+(3, 3, '2025-11-28', 'Familia muy emocionada. Max se adaptó inmediatamente. Los niños están felices.', 'Fundación'),
+
+-- 4. Misha adoptada por Pedro (4 días: 28-nov a 02-dic)
+(4, 5, '2025-12-02', 'Entrega realizada en la fundación. Misha se adaptó muy bien. Seguimiento programado para febrero.', 'Fundación'),
+
+-- 5. Daisy adoptada por Ana (4 días: 01-dic a 05-dic)
+(5, 7, '2025-12-05', 'Entrega exitosa. Daisy mostró buena adaptación. Seguimiento en 2 meses.', 'Fundación'),
+
+-- 6. Rocky adoptado por Pedro (5 días: 03-dic a 08-dic)
+(6, 8, '2025-12-08', 'Apartamento ideal para Rocky. Aire acondicionado funcionando. Seguimiento programado.', 'Fundación'),
+
+-- 7. Coco adoptado por Ana (2 días: 10-dic a 12-dic - proceso rápido)
+(7, 9, '2025-12-12', 'Proceso rápido. Coco se llevó bien con el gato de Ana inmediatamente.', 'Fundación'),
+
+-- 8. Simba adoptado por Pedro (7 días: 08-dic a 15-dic)
+(8, 10, '2025-12-15', 'Casa perfecta para Simba. Mucho espacio y áreas verticales. Excelente adopción.', 'Fundación'),
+
+-- 9. Bella adoptada por Sofia (4 días: 14-dic a 18-dic)
+(9, 11, '2025-12-18', 'Familia responsable. Bella se adaptó bien. La hija está muy contenta.', 'Fundación');
 
 -- ============================================================================
 -- 12. ACTIVIDADES DE VOLUNTARIADO
@@ -624,9 +708,24 @@ INSERT INTO INSCRIPCION_VOLUNTARIADO (
 -- ============================================================================
 -- La base de datos está lista para usar con:
 -- - 11 usuarios (2 coordinadores, 2 veterinarios, 3 voluntarios, 3 adoptantes, 1 admin)
--- - 10 animales disponibles para adopción (5 perros, 5 gatos)
--- - 6 solicitudes de adopción en diferentes estados
--- - 1 adopción completada
+-- - 10 animales (9 adoptados, 1 disponible)
+-- - 11 solicitudes de adopción (2025):
+--   * 1 Pendiente de revisión (Luna - Sofia)
+--   * 1 Rechazada (Rocky - Ana primera solicitud)
+--   * 9 Aprobadas (todas con adopciones registradas)
+-- - 9 adopciones completadas (21/11/2025 a 18/12/2025):
+--   * Firulais (3 días de proceso) - 21/11
+--   * Rex (5 días de proceso) - 25/11
+--   * Max (6 días de proceso) - 28/11
+--   * Misha (4 días de proceso) - 02/12
+--   * Daisy (4 días de proceso) - 05/12
+--   * Rocky (5 días de proceso) - 08/12
+--   * Coco (2 días de proceso - rápido) - 12/12
+--   * Simba (7 días de proceso) - 15/12
+--   * Bella (4 días de proceso) - 18/12
+--   * Tiempo promedio: ~4.4 días
+--   * Distribución: 4 Perros, 5 Gatos
 -- - 15 actividades de voluntariado (5 pasadas, 10 futuras)
--- - Historial completo de Mario como voluntario destacado
+--   * Actividad 10 (Paseo Nocturno) está LLENA (2/2 cupos)
+-- - Historial completo de Mario como voluntario destacado (13 horas acumuladas)
 -- ============================================================================

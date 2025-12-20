@@ -61,11 +61,24 @@ if (!empty($tipoAnimal)) {
 $resultReporte = $servicioAdopciones->generarReporteAdopciones($filtros);
 $datosReporte = $resultReporte->isSuccess() ? $resultReporte->getData() : [];
 
+// Debug: Log the result
+error_log("Reporte Result Success: " . ($resultReporte->isSuccess() ? 'YES' : 'NO'));
+if (!$resultReporte->isSuccess()) {
+    error_log("Reporte Error: " . $resultReporte->getMessage());
+    error_log("Reporte Errors: " . print_r($resultReporte->getErrors(), true));
+}
+error_log("Datos Reporte: " . print_r($datosReporte, true));
+
 // Obtener adopciones
 $adopciones = $datosReporte['adopciones'] ?? [];
 $estadisticas = $datosReporte['estadisticas_generales'] ?? [];
 $distribucionTipo = $datosReporte['distribucion_por_tipo'] ?? [];
 $distribucionSolicitudes = $datosReporte['distribucion_solicitudes'] ?? [];
+
+// Debug: Log counts
+error_log("Total adopciones: " . count($adopciones));
+error_log("Estadisticas: " . print_r($estadisticas, true));
+error_log("Distribución Tipo: " . print_r($distribucionTipo, true));
 
 // Obtener solicitudes si se filtró por estado
 $solicitudes = [];
@@ -1347,6 +1360,9 @@ if (isset($_GET['exportar']) && $_GET['exportar'] === 'csv') {
             const mesesData = <?php echo json_encode(array_keys($adopcionesPorMes)); ?>;
             const adopcionesData = <?php echo json_encode(array_values($adopcionesPorMes)); ?>;
             
+            console.log('Meses Data:', mesesData);
+            console.log('Adopciones Data:', adopcionesData);
+            
             new Chart(ctxMes, {
                 type: 'line',
                 data: {
@@ -1408,8 +1424,11 @@ if (isset($_GET['exportar']) && $_GET['exportar'] === 'csv') {
         const ctxEspecie = document.getElementById('chartDistribucionEspecie');
         if (ctxEspecie) {
             const distribucionData = <?php echo json_encode($distribucionTipo); ?>;
+            console.log('Distribución Data:', distribucionData);
             const especies = Object.keys(distribucionData);
             const cantidades = especies.map(e => distribucionData[e].cantidad);
+            console.log('Especies:', especies);
+            console.log('Cantidades:', cantidades);
             
             new Chart(ctxEspecie, {
                 type: 'doughnut',
